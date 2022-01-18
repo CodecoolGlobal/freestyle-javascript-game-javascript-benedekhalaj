@@ -1,5 +1,5 @@
 import * as movement from "./movement.js"
-import { createSaveButton, initEditorMenu } from "./save_map.js"
+import { createSaveButton, initEditorMenu, addListenerForTile } from "./save_map.js"
 
 
 const GAME_AREA_HEIGHT = 15;
@@ -7,16 +7,11 @@ const GAME_AREA_WIDTH = 30;
 
 
 function createElement(classOfElement) {
-    if (classOfElement === "player") {
-        let newDiv = document.createElement("div");
-        newDiv.className = "tile player fas fa-angry fa-2x";
-        return newDiv
-    } else {
     let newDiv = document.createElement("div");
     newDiv.className = "tile fas";
+    addListenerForTile(newDiv);
     classOfElement ? newDiv.classList.add(classOfElement) : {/*pass*/};
     return newDiv
-    }
 }
 
 function addRow() {
@@ -31,17 +26,10 @@ function createTable() {
     for (let i = 0; i < GAME_AREA_HEIGHT; i++) {
         let newRow = addRow();
         for (let j = 0; j < GAME_AREA_WIDTH; j++) {
-            if (i === 0 && j === 0) {
-                let newTile = createElement("player");
-                newTile.dataset.row = i;
-                newTile.dataset.column = j;
-                newRow.appendChild(newTile);
-            } else {
                 let newTile = createElement();
                 newTile.dataset.row = i;
                 newTile.dataset.column = j;
                 newRow.appendChild(newTile);
-            }
         }
     }
 }
