@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
+* {
+    transition: 0.5 ease;
+}
+
 html {
     overflow-x: hidden;
     scroll-snap-type: y mandatory;
@@ -58,14 +62,14 @@ ul {
     width: 50%;
     border: solid 2px floralwhite;
     border-radius: 5px;
-    background-color: lightcoral;
+    background-color: red;
     text-transform: uppercase;
     transition: 0.2s ease;
 }
 
 .play-btn:hover {
     background-color: floralwhite;
-    border: solid 2px lightcoral;
+    border: solid 2px red;
     transition: 0.2s ease;
 }
 
@@ -82,4 +86,19 @@ ul {
 .rotate {
     animation: rotate 2s linear infinite;
     
+}
+
+.fixed {
+    position: fixed;
+    top: 50px;
+    color: black;
+}
+
+.filler {
+    height: 600px;
+}
+
+.disable-scroll {
+    height: 100vh;
+    overflow: hidden;
 }
