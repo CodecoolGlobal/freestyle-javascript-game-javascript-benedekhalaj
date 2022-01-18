@@ -1,0 +1,50 @@
+html {
+    overflow-x: hidden;
+    scroll-snap-type: y mandatory;
+}
+
+body {
+    margin: 0;
+    background: url('/background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    color: white;
+}
+
+  
+.slide {
+    scroll-snap-align: start;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#slide-3, #slide-5 {
+    color: black;
+    background-color: floralwhite;
+}
+
+#slide-5 {
+    user-select: none;
+}
+
+.fa-compact-disc {
+    margin: 0;
+    font-size: 600px;
+}
+
+.play-btn {
+    font-size: 70px;
+    padding: 20px;
+    margin: 20px;
+    display: block;
+    width: 50%;
+    border: 0;
+    border-radius: 5px;
+    background-color: lightcoral;
+
+}
