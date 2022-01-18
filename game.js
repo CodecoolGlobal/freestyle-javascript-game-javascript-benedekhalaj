@@ -1,7 +1,7 @@
 import * as movement from "./recursivemovement.js"
 
-const GAME_AREA_HEIGHT = 20;
-const GAME_AREA_WIDTH = 30;
+const GAME_AREA_HEIGHT = 10;
+const GAME_AREA_WIDTH = 20;
 
 
 function createElement(classOfElement) {
