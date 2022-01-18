@@ -1,4 +1,5 @@
 import * as movement from "./movement.js"
+import { createSaveButton } from "./save_map.js"
 
 const GAME_AREA_HEIGHT = 10;
 const GAME_AREA_WIDTH = 20;
@@ -50,7 +51,6 @@ function initMovement() {
     });
 }
 
-
-
 createTable();
 initMovement();
+createSaveButton();
