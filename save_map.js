@@ -79,4 +79,12 @@ export function addListenerForTile(tile) {
         event.preventDefault();
         removeClassFromTile(chosenTile);
     })
+
+    tile.addEventListener("mouseover", (event) => {
+        let chosenTile = event.target;
+        if (event.ctrlKey) {
+            addClassToTile(chosenTile);
+        }
+    })
 }
+
