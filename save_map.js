@@ -60,12 +60,23 @@ function activateTile(chosenType) {
 
 function addClassToTile(targetTile) {
     let userChoice = document.querySelector("input[type=hidden]");
-    targetTile.classList.toggle(userChoice.value);
+    targetTile.classList.add(userChoice.value);
+}
+
+function removeClassFromTile(targetTile) {
+    let userChoice = document.querySelector("input[type=hidden]");
+    targetTile.classList.remove(userChoice.value);
 }
 
 export function addListenerForTile(tile) {
     tile.addEventListener("click", (event) => {
         let chosenTile = event.target;
         addClassToTile(chosenTile);
+    })
+
+    tile.addEventListener("contextmenu", (event) => {
+        let chosenTile = event.target;
+        event.preventDefault();
+        removeClassFromTile(chosenTile);
     })
 }
