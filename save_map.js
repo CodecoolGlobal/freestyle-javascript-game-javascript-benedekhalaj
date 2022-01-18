@@ -32,5 +32,11 @@ export function initEditorMenu() {
     const options = ["goal", "player", "obstacle"];
     let menu = document.createElement("div");
     menu.id = "editor-menu";
+    for (let option of options) {
+        let button = document.createElement("div");
+        button.id = "button";
+        button.className = option;
+        menu.appendChild(button);
+    }
     document.body.appendChild(menu);
 }
