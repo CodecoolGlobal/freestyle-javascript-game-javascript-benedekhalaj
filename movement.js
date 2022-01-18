@@ -1,6 +1,6 @@
 const AXIS_X_START = 0;
 const AXIS_Y_START = 0;
-const playerIcon = "fa-angry"
+const playerIcon = "fa-angry fa-2x"
 
 
 function setDirection(direction) {

@@ -1,14 +1,15 @@
 import * as movement from "./movement.js"
-import { createSaveButton } from "./save_map.js"
+import { createSaveButton, initEditorMenu } from "./save_map.js"
 
-const GAME_AREA_HEIGHT = 10;
-const GAME_AREA_WIDTH = 20;
+
+const GAME_AREA_HEIGHT = 15;
+const GAME_AREA_WIDTH = 30;
 
 
 function createElement(classOfElement) {
     if (classOfElement === "player") {
         let newDiv = document.createElement("div");
-        newDiv.className = "tile player fas fa-angry";
+        newDiv.className = "tile player fas fa-angry fa-2x";
         return newDiv
     } else {
     let newDiv = document.createElement("div");
@@ -54,3 +55,4 @@ function initMovement() {
 createTable();
 initMovement();
 createSaveButton();
+initEditorMenu();

@@ -27,3 +27,10 @@ export function createSaveButton() {
     saveButton.innerText = "save";
     document.body.appendChild(saveButton);
 }
+
+export function initEditorMenu() {
+    const options = ["goal", "player", "obstacle"];
+    let menu = document.createElement("div");
+    menu.id = "editor-menu";
+    document.body.appendChild(menu);
+}
