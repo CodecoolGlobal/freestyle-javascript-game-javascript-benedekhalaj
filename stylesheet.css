@@ -11,13 +11,15 @@
     width: 1200px;
     height: 600px;
     z-index: -1;
-    background-color: green;
+    background-color: lightgray;
+    border-radius: 10px;
 }
 
 #editor-menu {
     width: 250px;
     height:  500px;
     border-radius: 15px;
+    border: 10px ridge darkgrey;
     background-color: grey;
     display: flex;
     flex-direction: column;
@@ -31,6 +33,7 @@
     width: 150px;
     border-radius: 30px;
     background-color: lightcoral;
+    border: 5px outset salmon;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -70,8 +73,13 @@
 
 #button.save-button {
     background-color: lightgreen;
+    border-color: chartreuse;
 }
 
 #button:hover {
     scale: 1.2;
+}
+
+#button:active {
+    scale: 0.9;
 }
