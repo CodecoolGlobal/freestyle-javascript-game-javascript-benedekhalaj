@@ -17,10 +17,13 @@
 #editor-menu {
     width: 250px;
     height:  500px;
+    border-radius: 15px;
     background-color: grey;
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 10px;
+    padding: 20px 0 0 0;
 }
 
 #button {
@@ -31,6 +34,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: scale 0.3s;
 }
 
 .tile {
@@ -62,4 +66,12 @@
 
 .tile.obstacle {
     background-color: indigo;
+}
+
+#button.save-button {
+    background-color: lightgreen;
+}
+
+#button:hover {
+    scale: 1.2;
 }

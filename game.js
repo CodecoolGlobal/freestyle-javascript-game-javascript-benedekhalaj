@@ -1,5 +1,5 @@
 import * as movement from "./movement.js"
-import { createSaveButton, initEditorMenu, addListenerForTile } from "./map_editor.js"
+import { initEditorMenu, addListenerForTile } from "./map_editor.js"
 
 
 const GAME_AREA_HEIGHT = 15;
@@ -42,5 +42,4 @@ function initMovement() {
 
 createTable();
 initMovement();
-createSaveButton();
 initEditorMenu();

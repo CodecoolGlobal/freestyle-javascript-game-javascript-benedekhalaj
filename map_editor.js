@@ -21,11 +21,11 @@ function saveGameArea() {
     console.log(level);
 }
 
-export function createSaveButton() {
-    let saveButton = document.createElement("button")
+function createSaveButton() {
+    let saveButton = createButtonFor("Save map");
+    saveButton.className = "save-button"
     saveButton.addEventListener("click", saveGameArea);
-    saveButton.innerText = "save";
-    document.body.appendChild(saveButton);
+    return saveButton
 }
 
 function createButtonFor(buttonText) {
@@ -47,6 +47,8 @@ export function initEditorMenu() {
         })
         menu.appendChild(button);
     }
+    let saveMapButton = createSaveButton();
+    menu.appendChild(saveMapButton);
     document.body.appendChild(menu);
 }
 
