@@ -26,9 +26,12 @@
 #button {
     height: 50px;
     width: 150px;
+    border-radius: 30px;
+    background-color: lightcoral;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-
-
 
 .tile {
     width: 40px;
@@ -36,15 +39,15 @@
     text-align: center;
 }
 
-.tile.obstacle, div#button.obstacle {
+.tile.obstacle {
     background-color: black;
 }
 
-.tile.goal, div#button.goal {
+.tile.goal {
     background-color: lightskyblue;
 }
 
-.tile.player, div#button.player {
+.tile.player {
     text-align: center;
     background-color: pink;
     display: flex;

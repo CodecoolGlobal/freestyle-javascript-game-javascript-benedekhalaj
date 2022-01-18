@@ -28,24 +28,29 @@ export function createSaveButton() {
     document.body.appendChild(saveButton);
 }
 
+function createButtonFor(buttonText) {
+    let button = document.createElement("div");
+    button.id = "button";
+    button.innerText = buttonText;
+    return button
+}
+
 export function initEditorMenu() {
     const options = ["goal", "player", "obstacle"];
     let menu = document.createElement("div");
     menu.id = "editor-menu";
     for (let option of options) {
-        let button = document.createElement("div");
-        button.id = "button";
-        button.className = option;
+        let button = createButtonFor(option);
         button.addEventListener("click", (event) => {
             let choice = event.target;
-            activateTile(choice.className);
+            saveUserTileChoice(choice.innerText);
         })
         menu.appendChild(button);
     }
     document.body.appendChild(menu);
 }
 
-function activateTile(chosenType) {
+function saveUserTileChoice(chosenType) {
     let chosenTile = document.querySelector("input[type=hidden]");
     if (!chosenTile) {
         let userChoice = document.createElement("input");
@@ -54,13 +59,27 @@ function activateTile(chosenType) {
         document.body.appendChild(userChoice);
     } else {
         chosenTile.remove();
-        activateTile(chosenType);
+        saveUserTileChoice(chosenType);
     }
 }
 
 function addClassToTile(targetTile) {
     let userChoice = document.querySelector("input[type=hidden]");
-    targetTile.classList.toggle(userChoice.value);
+    let uniqueTypes = ["player", "goal"];
+    if (uniqueTypes.includes(userChoice.value)) {
+        if (checkIfUniqueTileExists(userChoice.value).length === 0) {
+            targetTile.classList.toggle(userChoice.value);
+        } else {
+            alert("in your dreams");
+        }
+    } else {
+        targetTile.classList.toggle(userChoice.value);
+    }
+
+}
+
+function checkIfUniqueTileExists(tileType) {
+    return (document.querySelectorAll(`.${tileType}`))
 }
 
 export function addListenerForTile(tile) {
