@@ -4,8 +4,6 @@
     justify-content: center;
     height: 100vh;
     width: 100vw;
-
-
 }
 .menuBox{
     width: 800px;
@@ -39,7 +37,6 @@
     border-radius: 15px;
     border: black 2px solid;
     z-index: 1;
-
 }
 #miniDisc{
     font-size: 30px;
@@ -52,17 +49,17 @@
     animation: spin 4000ms infinite linear; 
 
 }
-.menuButton:active ~ #miniDisc{
-    animation: rightDisc 2000ms 1 linear forwards;
+/*.menuButton:active ~ #miniDisc{
+    animation: rightDisc 2000ms 1 ease-out forwards;
     transform-origin: bottom right;
-}
+}*/
 .menuButton:hover{
     cursor: pointer;
 }
-.menuButton:active{
-    animation: right 2000ms 1 linear forwards;
+/*.menuButton:active{
+    animation: right 2000ms 1 ease-out forwards;
     transform-origin: bottom right;
-}
+}*/
 .menuBox .discContainer .fa-compact-disc{
     font-size: 500px;
     color: #3b3c36;
@@ -70,7 +67,6 @@
     right:10px;
     align-self: center;
     animation: spin 4000ms infinite linear;
-
 }
 @keyframes spin {
     from {
@@ -80,12 +76,18 @@
         transform:rotate(360deg);
     }
 }
+.rotating{
+    animation: right 2000ms 1 ease-out forwards;
+    transform-origin: bottom right;
+}
+.hideDisc{
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 2s, opacity 0.2s linear;
+}
+
 
 @keyframes right {
     75%{background-color: black;}
     100%{transform: rotate(90deg); background-color: black;}
-}
-@keyframes rightDisc {
-    50%{left:360px}
-    100%{transform: rotate(100deg); left:370px}
 }
