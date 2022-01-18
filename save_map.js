@@ -84,6 +84,8 @@ export function addListenerForTile(tile) {
         let chosenTile = event.target;
         if (event.ctrlKey) {
             addClassToTile(chosenTile);
+        } else if (event.shiftKey) {
+            removeClassFromTile(chosenTile);
         }
     })
 }
