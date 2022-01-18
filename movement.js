@@ -21,9 +21,9 @@ export function go(direction) {
     let playerRow = Number(player.dataset.row);
     let neighbour = document.querySelector(`[data-row="${playerRow + directionRow}"][data-column="${playerColumn + directionCol}"]`);
     if (neighbour === null) {
-        player.classList.toggle("fa-angry");
+        player.classList.remove("player", `${playerIcon}`);
         let startingPoint = document.querySelector(`[data-row="${AXIS_Y_START}"][data-column="${AXIS_X_START}"]`);
-        startingPoint.classList.toggle("fa-angry");
+        startingPoint.classList.add("player", `${playerIcon}`);
     } else if (!neighbour.classList.contains("obstacle")) {
         player.classList.remove("player", `${playerIcon}`);
         neighbour.classList.add("player", `${playerIcon}`);
