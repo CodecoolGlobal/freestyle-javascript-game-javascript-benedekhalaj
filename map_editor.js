@@ -2,16 +2,8 @@ const GAME_AREA_HEIGHT = 10;
 const GAME_AREA_WIDTH = 10;
 
 
-class Level {
-    constructor (axisX, axisY, tileType) {
-        this.axisX = axisX,
-        this.axisY = axisY,
-        this.tileType = tileType
-    }
-}
-
 export function createTable() {
-    const tileCount = 100;
+    const tileCount = GAME_AREA_HEIGHT * GAME_AREA_WIDTH;
     const display = document.getElementById("display");
     for (let i = 0; i < GAME_AREA_HEIGHT; i++) {
         for (let j = 0; j < GAME_AREA_WIDTH; j++) {
@@ -38,7 +30,7 @@ function createElement(classOfElement) {
 }
 
 function saveGameArea() {
-    let textArea = document.querySelector("textarea")
+    let textArea = document.querySelector("textarea");
     let display = document.getElementById("display");
     textArea.innerText = display.innerHTML;
 }
@@ -48,6 +40,13 @@ function createSaveButton() {
     saveButton.className = "save"
     saveButton.addEventListener("click", saveGameArea);
     return saveButton
+}
+
+function createCopyButton() {
+    let copyButton = createButtonFor("copy map");
+    copyButton.className = "copy"
+    copyButton.addEventListener("click", copyToClipboard);
+    return copyButton
 }
 
 function createGenerateMapButton() {
@@ -81,6 +80,8 @@ export function initEditorMenu() {
     }
     let saveMapButton = createSaveButton();
     let generateMapButton = createGenerateMapButton();
+    let copyMapHtmlButton = createCopyButton();
+    menu.appendChild(copyMapHtmlButton);
     menu.appendChild(saveMapButton);
     menu.appendChild(generateMapButton);
     document.body.appendChild(menu);
@@ -146,3 +147,9 @@ function addListenerForTile(tile) {
     })
 }
 
+function copyToClipboard() {
+    let generatedMapHtml = document.getElementById("map-html");
+    generatedMapHtml.select();
+    navigator.clipboard.writeText(generatedMapHtml.value);
+    alert("copied map html");
+}
