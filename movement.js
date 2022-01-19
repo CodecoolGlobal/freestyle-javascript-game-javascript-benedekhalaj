@@ -1,6 +1,5 @@
 const AXIS_X_START = 0;
 const AXIS_Y_START = 0;
-const playerIcon = "fa-angry"
 
 
 function setDirection(direction) {
@@ -25,10 +24,10 @@ export function go(direction) {
     } else if (neighbour === null) {
         player.classList.remove("player", `${playerIcon}`);
         let startingPoint = document.querySelector(`[data-row="${AXIS_Y_START}"][data-column="${AXIS_X_START}"]`);
-        startingPoint.classList.add("player", `${playerIcon}`);
+        startingPoint.classList.add("player");
     } else if (!neighbour.classList.contains("obstacle")) {
-        player.classList.remove("player", `${playerIcon}`);
-        neighbour.classList.add("player", `${playerIcon}`);
+        player.classList.remove("player");
+        neighbour.classList.add("player");
         go(direction);
     }
 }
