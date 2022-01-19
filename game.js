@@ -4,7 +4,10 @@ import { initEditorMenu, createTable } from "./map_editor.js"
 
 function initMovement() {
     document.addEventListener('keydown', function(event) {
-        movement.go(event.key)
+        let allowedKeys = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'];
+        if (allowedKeys.includes(event.key)) {
+            movement.go(event.key);
+        }
     });
 }
 

@@ -113,14 +113,20 @@ function addClassToTile(targetTile) {
     let uniqueTypes = ["player", "goal"];
     if (uniqueTypes.includes(userChoice.value)) {
         if (checkIfUniqueTileExists(userChoice.value).length === 0) {
-            targetTile.classList.toggle(userChoice.value);
+            targetTile.classList.add(userChoice.value);
         } else {
             alert("in your dreams");
         }
     } else {
-        targetTile.classList.toggle(userChoice.value);
+        targetTile.classList.add(userChoice.value);
     }
 
+}
+
+
+function removeClassFromTile(targetTile) {
+    let userChoice = document.querySelector("input[type=hidden]");
+    targetTile.classList.remove(userChoice.value);
 }
 
 function checkIfUniqueTileExists(tileType) {
@@ -132,4 +138,20 @@ function addListenerForTile(tile) {
         let chosenTile = event.target;
         addClassToTile(chosenTile);
     })
+
+    tile.addEventListener("contextmenu", (event) => {
+        let chosenTile = event.target;
+        event.preventDefault();
+        removeClassFromTile(chosenTile);
+    })
+
+    tile.addEventListener("mouseover", (event) => {
+        let chosenTile = event.target;
+        if (event.ctrlKey) {
+            addClassToTile(chosenTile);
+        } else if (event.shiftKey) {
+            removeClassFromTile(chosenTile);
+        }
+    })
 }
+
