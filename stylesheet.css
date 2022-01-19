@@ -5,6 +5,7 @@
     --obstacle-secondary-color: darkcyan;
     --floor-color: #f6f6f6;
     --display-bg-color: darkcyan;
+    --goal-color: rgb(103, 203, 221);
 }
 
 #display {
@@ -132,4 +133,8 @@ html {
 .player:after {
 transform:rotateY(90deg) translateX(1em);
 box-shadow:inset -.125em 0em .25em rgba(0,0,0,.1);
+}
+
+#display div.goal {
+    background: var(--goal-color);
 }
