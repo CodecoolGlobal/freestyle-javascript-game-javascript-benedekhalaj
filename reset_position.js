@@ -10,7 +10,7 @@ function resetPosition(){
 }
 document.addEventListener('keyup', (event) => {
     var name = event.key;
-    if (name === 'r') {
+    if (name === 'r' || name === 'R') {
       resetPosition()
     }
   }, false);
