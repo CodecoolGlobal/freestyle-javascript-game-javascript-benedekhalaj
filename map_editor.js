@@ -47,20 +47,20 @@ function createElement(classOfElement) {
 }
 
 function saveGameArea() {
-    let axisX = [];
-    let axisY = [];
-    let tileType = [];
-    let allTiles = document.querySelectorAll(".tile");
-    console.log(allTiles);
-    for (let tile of allTiles) {
-        axisX.push(tile.dataset.row);
-        axisY.push(tile.dataset.column);
-        tileType.push(tile.className);
-    }
-    const level = new Level(axisX, axisY, tileType);
-    console.log(level);
-    levels.level1 = level;
-    console.log(levels);
+    let textArea = document.querySelector("textarea")
+    let display = document.getElementById("display");
+    textArea.innerText = display.innerHTML;
+
+    // console.log(allTiles);
+    // for (let tile of allTiles) {
+    //     axisX.push(tile.dataset.row);
+    //     axisY.push(tile.dataset.column);
+    //     tileType.push(tile.className);
+    // }
+    // const level = new Level(axisX, axisY, tileType);
+    // console.log(level);
+    // levels.level1 = level;
+    // console.log(levels);
 }
 
 function createSaveButton() {
