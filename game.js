@@ -11,6 +11,6 @@ export function initMovement() {
     });
 }
 
-createTable();
-initMovement();
-initEditorMenu();
+// createTable();
+// initMovement();
+// initEditorMenu();
