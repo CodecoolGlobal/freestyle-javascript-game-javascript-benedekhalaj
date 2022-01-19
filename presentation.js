@@ -1,41 +1,14 @@
 const playBtn = document.querySelector('.play-btn');
-const stopBtn = document.querySelector('.stop-btn');
 
 const compactDisk = document.querySelector('.fa-compact-disc');
-const audio = document.getElementById("myAudio");
 
 const slides = document.querySelectorAll(".slide");
 
 playBtn.addEventListener('click', function() {
     compactDisk.classList.add('rotate');
-    audio.play();
-    removeSlides(4);
-    // document.body.classList.add('disable-scroll');
-
-    setTimeout(function () {
-        
-        createFillerElement();
-        createSlide6();
-        createSlides();
-        const slideElement = document.getElementById("slide-6");
-        setTimeout(function () {
-            scrollToElement(slideElement); 
-        }, 1000);
-        
-    }, 2000);
-
+    scrollToPosition(0, 1500);
 })
 
-stopBtn.addEventListener('click', function() {
-    compactDisk.classList.remove('rotate');
-    audio.pause();
-    audio.currentTime = 0;
-})
-
-
-function scrollToElement(element) {
-    element.scrollIntoView({behavior: 'smooth'});
-}
 
 function removeSlides(slideCount) {
     for (let i = 0; i < slideCount; i++) {
@@ -74,8 +47,13 @@ function createFillerElement() {
 
 function scrollToPosition(position, duration) {
     document.querySelector('html').style.scrollSnapType = 'none';
+
     $('html, body').animate({
         scrollTop: position
     }, duration, function(){
     });
+
+    setTimeout(function () {
+        document.querySelector('html').style.scrollSnapType = 'y mandatory';
+    }, duration)
 }
