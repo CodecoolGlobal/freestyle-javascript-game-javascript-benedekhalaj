@@ -1,5 +1,5 @@
-const GAME_AREA_HEIGHT = 15;
-const GAME_AREA_WIDTH = 30;
+const GAME_AREA_HEIGHT = 10;
+const GAME_AREA_WIDTH = 10;
 
 let levels = {}
 
@@ -12,13 +12,14 @@ class Level {
 }
 
 export function createTable() {
+    const tileCount = 100;
+    const display = document.getElementById("display");
     for (let i = 0; i < GAME_AREA_HEIGHT; i++) {
-        let newRow = addRow();
         for (let j = 0; j < GAME_AREA_WIDTH; j++) {
                 let newTile = createElement();
                 newTile.dataset.row = i;
                 newTile.dataset.column = j;
-                newRow.appendChild(newTile);
+                display.appendChild(newTile);
         }
     }
 }
@@ -40,7 +41,6 @@ function addRow() {
 
 function createElement(classOfElement) {
     let newDiv = document.createElement("div");
-    newDiv.className = "tile fas";
     addListenerForTile(newDiv);
     classOfElement ? newDiv.classList.add(classOfElement) : {/*pass*/};
     return newDiv
@@ -50,17 +50,6 @@ function saveGameArea() {
     let textArea = document.querySelector("textarea")
     let display = document.getElementById("display");
     textArea.innerText = display.innerHTML;
-
-    // console.log(allTiles);
-    // for (let tile of allTiles) {
-    //     axisX.push(tile.dataset.row);
-    //     axisY.push(tile.dataset.column);
-    //     tileType.push(tile.className);
-    // }
-    // const level = new Level(axisX, axisY, tileType);
-    // console.log(level);
-    // levels.level1 = level;
-    // console.log(levels);
 }
 
 function createSaveButton() {
