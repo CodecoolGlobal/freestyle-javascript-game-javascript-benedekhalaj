@@ -8,7 +8,6 @@
     box-shadow:.25em .25em 1em rgba(0,0,0,.2);
     transform:rotatex(45deg) rotateZ(45deg) translateZ(-1em);
     transform-style: preserve-3d;
-    
 }
 
 #editor-menu {
@@ -67,73 +66,63 @@ html{
     background:orange;
     box-shadow:inset 0 0 1em black;
     overflow:hidden;
-  }
-  #display div,
-  .obstacle:before,
-  .obstacle:after,
-  .player:before,
-  .player:after{
+}
+#display div,
+.obstacle:before,
+.obstacle:after,
+.player:before,
+.player:after{
     width:1em;
     height:1em;
-  }
-  #display{
-    width:10em;
-    height:10em;
-    margin:0 auto;
-    position:relative;
-    top:.25em;
-    background:darkcyan;
-    box-shadow:.25em .25em 1em rgba(0,0,0,.2);
-    transform:rotatex(45deg) rotateZ(45deg) translateZ(-1em);
-    transform-style: preserve-3d;
-    
-  }
-  #display div{
+}
+
+#display div{
     float:left;
     background:#f6f6f6;
     transform-origin: 97% 97%;
     position:relative;
     box-shadow:.125em .125em .5em rgba(0,0,0,.09);
-  }
-  
-  .obstacle{
+}
+
+.obstacle{
     background:white !important;
     transform: translateZ(1em);
     transform-style: preserve-3d;
-  }
-  .obstacle:before, .obstacle:after{
+}
+.obstacle:before, .obstacle:after{
     content:"";
     background:darkcyan;
     position: absolute;
     transform-origin: 100% 100%;
-  }
-  .obstacle:before{
+}
+.obstacle:before{
     transform:rotateX(-90deg) translateY(1em);
     box-shadow:inset 0em -.125em .25em rgba(0,0,0,.1);
-  }
-  
-  .obstacle:after{
+}
+
+.obstacle:after{
     transform:rotateY(90deg) translateX(1em);
     box-shadow:inset -.125em 0em .25em rgba(0,0,0,.1);
-  }
-  .player{
-    background:cyan !important;
+}
+.player{
+    background:orange !important;
     transform: translateZ(1em);
     transform-style: preserve-3d;
-  }
-  .player:before, .player:after{
+    transition-property: transform;
+    transition: 0.7s;
+}
+.player:before, .player:after{
     content:"";
-    background:darkblue;
+    background: rgb(255, 149, 49);
     position: absolute;
     transform-origin: 100% 100%;
-  }
-  .player:before{
+}
+.player:before{
     transform:rotateX(-90deg) translateY(1em);
     box-shadow:inset 0em -.125em .25em rgba(0,0,0,.1);
-  }
-  
-  .player:after{
-    transform:rotateY(90deg) translateX(1em);
-    box-shadow:inset -.125em 0em .25em rgba(0,0,0,.1);
-  }
-  
+}
+
+.player:after{
+transform:rotateY(90deg) translateX(1em);
+box-shadow:inset -.125em 0em .25em rgba(0,0,0,.1);
+}

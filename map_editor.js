@@ -31,14 +31,6 @@ function deleteTable() {
     }
 }
 
-function addRow() {
-    const display = document.getElementById("display");
-    const newRow = document.createElement("div");
-    newRow.className = "row";
-    display.appendChild(newRow);
-    return newRow
-}
-
 function createElement(classOfElement) {
     let newDiv = document.createElement("div");
     addListenerForTile(newDiv);
@@ -53,14 +45,14 @@ function saveGameArea() {
 }
 
 function createSaveButton() {
-    let saveButton = createButtonFor("Save map");
+    let saveButton = createButtonFor("save map");
     saveButton.className = "save"
     saveButton.addEventListener("click", saveGameArea);
     return saveButton
 }
 
 function createGenerateMapButton() {
-    let generateButton = createButtonFor("Generate map");
+    let generateButton = createButtonFor("new map");
     generateButton.className = "generate-map"
     generateButton.addEventListener("click", (e) => {
         deleteTable();
