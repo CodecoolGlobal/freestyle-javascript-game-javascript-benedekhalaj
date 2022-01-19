@@ -1,3 +1,5 @@
+import { getLevelOne } from "./levels.js";
+
 const menuButton = document.querySelector('.menuButton');
 const slides = document.querySelectorAll(".slide");
 const body = document.body;
@@ -23,11 +25,17 @@ menuButton.addEventListener('click', function() {
         createDivElement('level', 'level-1');
     }, 2250);
     setTimeout(function () {
+        const html = document.querySelector('html');
+        html.classList.add('init-game');
         const gameArea = document.getElementById('level-1');
+        gameArea.innerHTML = '<div id="display"></div>';
+        gameArea.children[0].innerHTML = getLevelOne();
         scrollToPosition($(document).height() - gameArea.clientHeight, 2000)
     }, 3500);
     setTimeout(function () {
         removeDivElement('menuBox');
+        
+        
     }, 5500);
 
 playBtn.addEventListener('click', function () {

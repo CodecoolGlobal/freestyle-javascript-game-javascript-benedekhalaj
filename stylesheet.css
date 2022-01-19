@@ -8,6 +8,7 @@
     box-shadow:.25em .25em 1em rgba(0,0,0,.2);
     transform:rotatex(45deg) rotateZ(45deg) translateZ(-1em);
     transform-style: preserve-3d;
+    font-size: 2em;
 }
 
 #editor-menu {
@@ -40,12 +41,6 @@
     height: 1em;
   }
 
-html {
-    height:100%;
-    background:orange;
-    box-shadow:inset 0 0 1em black;
-    overflow:hidden;
-}
 
 #button.save-button, #button.load, #button.generate-map {
     background-color: lightgreen;
@@ -60,13 +55,14 @@ html {
     scale: 0.9;
 }
 
-html{
+.init-game {
     height:100%;
-    font-size:2em;
+    /* font-size:2em; */
     background:orange;
     box-shadow:inset 0 0 1em black;
-    overflow:hidden;
+    overflow: hidden;
 }
+
 #display div,
 .obstacle:before,
 .obstacle:after,
