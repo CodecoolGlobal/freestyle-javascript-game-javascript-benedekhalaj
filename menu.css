@@ -16,7 +16,6 @@
     top: 5%;
     font-size: 6em;
     font-family: helvetica;
-    flex-shrink: 1;
 }
 
 .menuButton{
@@ -30,14 +29,12 @@
     border-radius: 15px;
     border: black 2px solid;
     z-index: 1;
-    flex-shrink: 1;
 }
 #miniDisc{
     font-size: 2em;
     position: absolute;
     left: 41%;
     bottom: 15.4%;
-    flex-shrink: 1;
 }
 .menuButton:hover ~ #miniDisc{
     animation: spin 4000ms infinite linear; 
@@ -57,7 +54,6 @@
     right:12%;
     top: 14%;
     animation: spin 4000ms infinite linear;
-    flex-shrink: 1;
 }
 .rotating{
     animation: right 2000ms 1 ease-out forwards;
@@ -66,7 +62,7 @@
 .hideDisc{
     visibility: hidden;
     opacity: 0;
-    transition: visibility 0s 2s, opacity 0.2s linear;
+    transition: visibility 0s 2s, opacity 0.1s linear;
 }
 @keyframes spin {
     from {
