@@ -1,7 +1,6 @@
 const GAME_AREA_HEIGHT = 10;
 const GAME_AREA_WIDTH = 10;
 
-let levels = {}
 
 class Level {
     constructor (axisX, axisY, tileType) {
