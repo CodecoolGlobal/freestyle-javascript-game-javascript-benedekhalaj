@@ -10,7 +10,7 @@ playBtn.addEventListener('click', function() {
     compactDisk.classList.add('rotate');
     audio.play();
     removeSlides(4);
-    document.body.classList.add('disable-scroll');
+    // document.body.classList.add('disable-scroll');
 
     setTimeout(function () {
         
@@ -69,4 +69,13 @@ function createFillerElement() {
     let div = document.createElement('div');
     div.className = 'filler';
     slide4.insertAdjacentElement('afterbegin', div);
+}
+
+
+function scrollToPosition(position, duration) {
+    document.querySelector('html').style.scrollSnapType = 'none';
+    $('html, body').animate({
+        scrollTop: position
+    }, duration, function(){
+    });
 }
