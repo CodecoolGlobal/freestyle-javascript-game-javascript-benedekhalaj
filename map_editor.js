@@ -2,16 +2,8 @@ const GAME_AREA_HEIGHT = 10;
 const GAME_AREA_WIDTH = 10;
 
 
-class Level {
-    constructor (axisX, axisY, tileType) {
-        this.axisX = axisX,
-        this.axisY = axisY,
-        this.tileType = tileType
-    }
-}
-
 export function createTable() {
-    const tileCount = 100;
+    const tileCount = GAME_AREA_HEIGHT * GAME_AREA_WIDTH;
     const display = document.getElementById("display");
     for (let i = 0; i < GAME_AREA_HEIGHT; i++) {
         for (let j = 0; j < GAME_AREA_WIDTH; j++) {
@@ -145,4 +137,3 @@ function addListenerForTile(tile) {
         }
     })
 }
-
