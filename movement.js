@@ -22,7 +22,7 @@ export function go(direction) {
     if (neighbour.classList.contains("goal")){
         console.log("you won")
     } else if (neighbour === null) {
-        player.classList.remove("player", `${playerIcon}`);
+        player.classList.remove("player");
         let startingPoint = document.querySelector(`[data-row="${AXIS_Y_START}"][data-column="${AXIS_X_START}"]`);
         startingPoint.classList.add("player");
     } else if (!neighbour.classList.contains("obstacle")) {
