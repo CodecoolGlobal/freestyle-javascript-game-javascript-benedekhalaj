@@ -1,4 +1,18 @@
+<<<<<<< HEAD
 #display{
+=======
+:root {
+    --player-primary-color: orange;
+    --player-secondary-color: rgb(255, 149, 49);
+    --obstacle-primary-color: white;
+    --obstacle-secondary-color: darkcyan;
+    --floor-color: #f6f6f6;
+    --display-bg-color: darkcyan;
+    --goal-color: rgb(103, 203, 221);
+}
+
+#display {
+>>>>>>> 54f8158... Fix conflict with presentation CSS
     font-size:2em;
     width: 10em;
     height: 10em;
