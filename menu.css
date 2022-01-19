@@ -54,8 +54,20 @@
     position: absolute;
     right:12%;
     top: 14%;
-    animation: spin 4000ms infinite linear;
 }
+
+.start-spin {
+    animation: start-spin 900ms ease-in;
+}
+
+.continue-spin {
+    animation: continue-spin 1350ms linear;
+}
+
+.spin {
+    animation: spin 1800ms infinite linear;
+}
+
 .rotating{
     animation: right 2000ms 1 ease-out forwards;
     transform-origin: bottom right;
@@ -73,6 +85,25 @@
         transform:rotate(360deg);
     }
 }
+
+@keyframes start-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(90deg);
+    }
+}
+
+@keyframes continue-spin {
+    from {
+        transform: rotate(90deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 @keyframes right {
     50%{background-color: black;}
     100%{transform: rotate(119deg); background-color: black; border-radius: 60px;}
