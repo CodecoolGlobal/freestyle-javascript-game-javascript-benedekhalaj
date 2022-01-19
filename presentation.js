@@ -1,12 +1,22 @@
+const menuButton = document.querySelector('.menuButton');
+const slides = document.querySelectorAll(".slide");
+const body = document.body;
+const menu = document.querySelector('.menuBox');
+
 const playBtn = document.querySelector('.play-btn');
 
-const compactDisk = document.querySelector('.fa-compact-disc');
+menuButton.addEventListener('click', function() {
+    console.log(menu);
+    // scrollToPosition(0, 1000);
+    // setTimeout(function () {
+    //     body.classList.add('disable-scroll');
+    //     removeSlides(4);
+    //     createSlides;
+    // }, 1000)
+})
 
-const slides = document.querySelectorAll(".slide");
-
-playBtn.addEventListener('click', function() {
-    compactDisk.classList.add('rotate');
-    scrollToPosition(0, 1500);
+playBtn.addEventListener('click', function () {
+    scrollToPosition($(document).height() - menu.clientHeight, 2000);
 })
 
 
@@ -16,16 +26,6 @@ function removeSlides(slideCount) {
     }
 }
 
-function createSlide6() {
-    let div = document.createElement('div');
-    let newCompactDisk = compactDisk;
-    newCompactDisk.classList.add('fixed');
-    div.className = 'slide';
-    div.id = 'slide-6';
-    div.appendChild(compactDisk);
-
-    document.body.appendChild(div);
-}
 
 function createSlides() {
     for (let i = 0; i < 5; i++) {

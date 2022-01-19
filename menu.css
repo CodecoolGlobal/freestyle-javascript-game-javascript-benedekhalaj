@@ -3,6 +3,8 @@
     margin: 0px;
 }
 .menuBox{
+    user-select: none;
+    scroll-snap-align: start;
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -14,8 +16,7 @@
     position: absolute;
     left: 8%;
     top: 5%;
-    font-size: 6em;
-    font-family: helvetica;
+    font-size: 6rem;
 }
 
 .menuButton{
