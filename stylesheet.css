@@ -56,7 +56,7 @@
 
 .tile.player {
     text-align: center;
-    background-color: pink;
+    background-color: orange;
     display: flex;
     justify-content: center;
     align-content: center;
@@ -71,7 +71,7 @@
     background-color: indigo;
 }
 
-#button.save-button {
+#button.save, #button.load, #button.generate-map {
     background-color: lightgreen;
     border-color: chartreuse;
 }

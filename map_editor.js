@@ -1,9 +1,49 @@
+const GAME_AREA_HEIGHT = 15;
+const GAME_AREA_WIDTH = 30;
+
+let levels = {}
+
 class Level {
     constructor (axisX, axisY, tileType) {
         this.axisX = axisX,
         this.axisY = axisY,
         this.tileType = tileType
     }
+}
+
+export function createTable() {
+    for (let i = 0; i < GAME_AREA_HEIGHT; i++) {
+        let newRow = addRow();
+        for (let j = 0; j < GAME_AREA_WIDTH; j++) {
+                let newTile = createElement();
+                newTile.dataset.row = i;
+                newTile.dataset.column = j;
+                newRow.appendChild(newTile);
+        }
+    }
+}
+
+function deleteTable() {
+    const display = document.getElementById("display");
+    while (display.firstChild) {
+        display.removeChild(display.lastChild);
+    }
+}
+
+function addRow() {
+    const display = document.getElementById("display");
+    const newRow = document.createElement("div");
+    newRow.className = "row";
+    display.appendChild(newRow);
+    return newRow
+}
+
+function createElement(classOfElement) {
+    let newDiv = document.createElement("div");
+    newDiv.className = "tile fas";
+    addListenerForTile(newDiv);
+    classOfElement ? newDiv.classList.add(classOfElement) : {/*pass*/};
+    return newDiv
 }
 
 function saveGameArea() {
@@ -19,13 +59,25 @@ function saveGameArea() {
     }
     const level = new Level(axisX, axisY, tileType);
     console.log(level);
+    levels.level1 = level;
+    console.log(levels);
 }
 
 function createSaveButton() {
     let saveButton = createButtonFor("Save map");
-    saveButton.className = "save-button"
+    saveButton.className = "save"
     saveButton.addEventListener("click", saveGameArea);
     return saveButton
+}
+
+function createGenerateMapButton() {
+    let generateButton = createButtonFor("Generate map");
+    generateButton.className = "generate-map"
+    generateButton.addEventListener("click", (e) => {
+        deleteTable();
+        createTable();
+    });
+    return generateButton
 }
 
 function createButtonFor(buttonText) {
@@ -48,7 +100,9 @@ export function initEditorMenu() {
         menu.appendChild(button);
     }
     let saveMapButton = createSaveButton();
+    let generateMapButton = createGenerateMapButton();
     menu.appendChild(saveMapButton);
+    menu.appendChild(generateMapButton);
     document.body.appendChild(menu);
 }
 
@@ -84,7 +138,7 @@ function checkIfUniqueTileExists(tileType) {
     return (document.querySelectorAll(`.${tileType}`))
 }
 
-export function addListenerForTile(tile) {
+function addListenerForTile(tile) {
     tile.addEventListener("click", (event) => {
         let chosenTile = event.target;
         addClassToTile(chosenTile);
