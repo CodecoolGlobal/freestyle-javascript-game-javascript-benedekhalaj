@@ -1,80 +1,63 @@
-.centerMenu {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    width: 100vw;
+* {
+    box-sizing: border-box;
+    margin: 0px;
 }
 .menuBox{
-    width: 800px;
-    height: 500px;
+    width: 100vw;
+    height: 100vh;
     display: flex;
     position: relative;
-    border:black 10px solid;
-    border-radius: 15px;
-    background-image: linear-gradient(to bottom right,  #CB9256, #F1E2B3);;
+    background-color: orange;
 
 }
 .menuTitle{
     position: absolute;
-    left: 20px;
-    font-size: 55px;
+    left: 8%;
+    top: 5%;
+    font-size: 6em;
+    font-family: helvetica;
+    flex-shrink: 1;
 }
 
-.buttonContainer{
-    display: flex;
-    height:70px;
-    align-self: flex-end;
-}
 .menuButton{
-    width: 380px;
-    height: 60px;
-    margin-left: 10px;
-    margin-bottom: 10px;
-    align-self: end;
+    width: 18em;
+    height: 2em;
+    left: 5%;
+    bottom: 13%;
+    position: absolute;
     background-color: rgba(0,0,0,.25);
-    font-size: 35px;
+    font-size: 2.5em;
     border-radius: 15px;
     border: black 2px solid;
     z-index: 1;
+    flex-shrink: 1;
 }
 #miniDisc{
-    font-size: 30px;
-    align-self:flex-end;
+    font-size: 2em;
     position: absolute;
-    left: 350px;
-    bottom: 25px;
+    left: 41%;
+    bottom: 15.4%;
+    flex-shrink: 1;
 }
 .menuButton:hover ~ #miniDisc{
     animation: spin 4000ms infinite linear; 
 
 }
-/*.menuButton:active ~ #miniDisc{
-    animation: rightDisc 2000ms 1 ease-out forwards;
-    transform-origin: bottom right;
-}*/
 .menuButton:hover{
     cursor: pointer;
+    background-color: rgba(0,0,0,.3);
 }
-/*.menuButton:active{
-    animation: right 2000ms 1 ease-out forwards;
-    transform-origin: bottom right;
-}*/
+.discContainer{
+    display: flex;
+}
 .menuBox .discContainer .fa-compact-disc{
-    font-size: 500px;
+    font-size: 44em;
     color: #3b3c36;
     position: absolute;
-    right:10px;
-    align-self: center;
+    right:12%;
+    top: 14%;
     animation: spin 4000ms infinite linear;
-}
-@keyframes spin {
-    from {
-        transform:rotate(0deg);
-    }
-    to {
-        transform:rotate(360deg);
-    }
+    flex-shrink: 1;
 }
 .rotating{
     animation: right 2000ms 1 ease-out forwards;
@@ -85,9 +68,15 @@
     opacity: 0;
     transition: visibility 0s 2s, opacity 0.2s linear;
 }
-
-
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
 @keyframes right {
-    75%{background-color: black;}
-    100%{transform: rotate(90deg); background-color: black;}
+    50%{background-color: black;}
+    100%{transform: rotate(119deg); background-color: black; border-radius: 60px;}
 }
