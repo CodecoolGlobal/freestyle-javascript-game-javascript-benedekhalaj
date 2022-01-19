@@ -1,4 +1,5 @@
 import { getLevelOne } from "./levels.js";
+import { initMovement } from "./game.js";
 
 const menuButton = document.querySelector('.menuButton');
 const slides = document.querySelectorAll(".slide");
@@ -34,8 +35,7 @@ menuButton.addEventListener('click', function() {
     }, 3500);
     setTimeout(function () {
         removeDivElement('menuBox');
-        
-        
+        initMovement();
     }, 5500);
 
 playBtn.addEventListener('click', function () {
