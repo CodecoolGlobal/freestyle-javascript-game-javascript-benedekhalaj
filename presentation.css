@@ -43,12 +43,30 @@ ul {
     text-align: center;
 }
 
-#slide-3, #slide-5 {
+#slide-3, #slide-5, #slide-2 {
     color: black;
     background-color: floralwhite;
 }
 
+#slide-2 div {
+    z-index: 1;
+}
+
+#slide-2 div h1 {
+    margin-bottom: 50px;
+    color: black;
+}
+
+#map-editor-video {
+    margin: 0;
+    position: absolute;
+    filter: blur(5px);
+}
+
+
 .fa-compact-disc {
+    min-width: 100%;
+    min-height: 100%;
     margin: 0;
     font-size: 600px;
 }
@@ -79,6 +97,7 @@ ul {
     width: 100vw;
     background-color: orange;
 }
+
 
 
 @keyframes rotate {
