@@ -74,6 +74,16 @@ html {
     scale: 0.9;
 }
 
+<<<<<<< HEAD
+=======
+html {
+    height:100%;
+    background:orange;
+    box-shadow:inset 0 0 1em black;
+    overflow:hidden;
+}
+
+>>>>>>> 54f8158... Fix conflict with presentation CSS
 #display div,
 .obstacle:before,
 .obstacle:after,
