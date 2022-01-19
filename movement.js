@@ -20,7 +20,9 @@ export function go(direction) {
     let playerColumn = Number(player.dataset.column);
     let playerRow = Number(player.dataset.row);
     let neighbour = document.querySelector(`[data-row="${playerRow + directionRow}"][data-column="${playerColumn + directionCol}"]`);
-    if (neighbour === null) {
+    if (neighbour.classList.contains("goal")){
+        console.log("you won")
+    } else if (neighbour === null) {
         player.classList.remove("player", `${playerIcon}`);
         let startingPoint = document.querySelector(`[data-row="${AXIS_Y_START}"][data-column="${AXIS_X_START}"]`);
         startingPoint.classList.add("player", `${playerIcon}`);
