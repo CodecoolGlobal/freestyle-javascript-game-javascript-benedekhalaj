@@ -8,3 +8,9 @@ function resetPosition(){
     let startingPoint = document.querySelector(`[data-row="${AXIS_Y_START}"][data-column="${AXIS_X_START}"]`);
     startingPoint.classList.add("player", `${playerIcon}`);
 }
+document.addEventListener('keyup', (event) => {
+    var name = event.key;
+    if (name === 'r') {
+      resetPosition()
+    }
+  }, false);
