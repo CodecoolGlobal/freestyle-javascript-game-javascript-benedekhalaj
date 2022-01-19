@@ -13,11 +13,11 @@
     width: 10em;
     height: 10em;
     margin:0 auto;
-    position:relative;
-    top:.25em;
-    background:darkcyan;
-    box-shadow:.25em .25em 1em rgba(0,0,0,.2);
-    transform:rotatex(45deg) rotateZ(45deg) translateZ(-1em);
+    position: relative;
+    top: .25em;
+    background: var(--display-bg-color);
+    box-shadow: .25em .25em 1em rgba(0,0,0,.2);
+    transform: rotatex(45deg) rotateZ(45deg) translateZ(-1em);
     transform-style: preserve-3d;
 }
 
@@ -79,57 +79,61 @@ html {
 .obstacle:after,
 .player:before,
 .player:after{
-    width:1em;
-    height:1em;
+    width: 1em;
+    height: 1em;
 }
 
 #display div {
-    float:left;
-    background:#f6f6f6;
+    float: left;
+    background: var(--floor-color);
     transform-origin: 97% 97%;
-    position:relative;
-    box-shadow:.125em .125em .5em rgba(0,0,0,.09);
+    position: relative;
+    box-shadow: .125em .125em .5em rgba(0,0,0,.09);
 }
 
 .obstacle {
-    background:white !important;
+    background: var(--obstacle-primary-color) !important;
     transform: translateZ(1em);
     transform-style: preserve-3d;
 }
 .obstacle:before, .obstacle:after {
-    content:"";
-    background:darkcyan;
+    content: "";
+    background: var(--obstacle-secondary-color);
     position: absolute;
     transform-origin: 100% 100%;
 }
 .obstacle:before {
-    transform:rotateX(-90deg) translateY(1em);
-    box-shadow:inset 0em -.125em .25em rgba(0,0,0,.1);
+    transform: rotateX(-90deg) translateY(1em);
+    box-shadow: inset 0em -.125em .25em rgba(0,0,0,.1);
 }
 
 .obstacle:after {
-    transform:rotateY(90deg) translateX(1em);
-    box-shadow:inset -.125em 0em .25em rgba(0,0,0,.1);
+    transform: rotateY(90deg) translateX(1em);
+    box-shadow: inset -.125em 0em .25em rgba(0,0,0,.1);
 }
 .player {
-    background:orange !important;
+    background: var(--player-primary-color) !important;
     transform: translateZ(1em);
     transform-style: preserve-3d;
     transition-property: transform;
     transition: 0.7s;
 }
 .player:before, .player:after {
-    content:"";
-    background: rgb(255, 149, 49);
+    content: "";
+    background: var(--player-secondary-color);
     position: absolute;
     transform-origin: 100% 100%;
 }
 .player:before {
-    transform:rotateX(-90deg) translateY(1em);
-    box-shadow:inset 0em -.125em .25em rgba(0,0,0,.1);
+    transform: rotateX(-90deg) translateY(1em);
+    box-shadow: inset 0em -.125em .25em rgba(0,0,0,.1);
 }
 
 .player:after {
-transform:rotateY(90deg) translateX(1em);
-box-shadow:inset -.125em 0em .25em rgba(0,0,0,.1);
+transform: rotateY(90deg) translateX(1em);
+box-shadow: inset -.125em 0em .25em rgba(0,0,0,.1);
+}
+
+.goal {
+    background: var(--goal-color) !important;
 }
