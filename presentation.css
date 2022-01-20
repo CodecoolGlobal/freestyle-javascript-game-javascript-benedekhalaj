@@ -114,6 +114,7 @@ ul {
     font-size: 3em;
     left:0.8%;
     top:1%;
+    cursor: pointer;
 }
 .fa-volume-mute{
     position: absolute;
@@ -122,6 +123,7 @@ ul {
     top:1%;
     display: none;
     visibility: hidden;
+    cursor: pointer;
 }
 
 
