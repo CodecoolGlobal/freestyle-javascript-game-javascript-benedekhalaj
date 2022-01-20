@@ -1,3 +1,5 @@
+import { getLevelOne } from "./levels.js";
+
 function setDirection(direction) {
     const arrowDirection = {
         "ArrowLeft": [0, -1],
@@ -20,7 +22,9 @@ export function go(direction) {
     let playerRow = Number(player.dataset.row);
     let neighbour = document.querySelector(`[data-row="${playerRow + directionRow}"][data-column="${playerColumn + directionCol}"]`);
     if (checkWin(player)) {
-        console.log("you've won");
+        const currentLevel = document.querySelector('.level');
+        console.log(currentLevel.id[-1]);
+        setTimeout(switchLevel, 2000);
     } else if (neighbour === null) {
         player.classList.remove("player");
         let startingPoint = document.querySelector(`[data-row="${axisX}"][data-column="${axisY}"]`);
@@ -44,4 +48,42 @@ function getOriginCoordinates() {
         let axisY = 0;
         return [axisX, axisY]
     }
+}
+
+function switchLevel() {
+    createDivElement('level', 'level-2');
+    const gameArea = document.getElementById('level-2');
+    gameArea.innerHTML = '<h1>Level 2</h1><div id="display"></div>';
+    gameArea.children[1].innerHTML = getLevelOne();
+    scrollToPosition($(document).height() - gameArea.clientHeight, 2000);
+
+    setTimeout(function () {
+        removeDivElement('level-1');
+    }, 2000)
+}
+
+function scrollToPosition(position, duration) {
+    document.querySelector('html').style.scrollSnapType = 'none';
+
+    $('html, body').animate({
+        scrollTop: position
+    }, duration, function(){
+    });
+
+    setTimeout(function () {
+        document.querySelector('html').style.scrollSnapType = 'y mandatory';
+    }, duration)
+}
+
+
+function createDivElement(className, id) {
+    let div = document.createElement('div');
+    div.id = id;
+    div.className = className;
+    document.body.appendChild(div);
+}
+
+function removeDivElement(id) {
+    const div = document.getElementById(id);
+    div.remove();
 }

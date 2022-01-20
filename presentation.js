@@ -28,6 +28,7 @@ menuButton.addEventListener('click', function() {
         removeSlides(4);
         createDivElement('level', 'level-1');
     }, 2250);
+
     setTimeout(function () {
         const html = document.querySelector('html');
         html.classList.add('init-game');
@@ -36,6 +37,7 @@ menuButton.addEventListener('click', function() {
         gameArea.children[1].innerHTML = getLevelOne();
         scrollToPosition($(document).height() - gameArea.clientHeight, 2000)
     }, 3500);
+
     setTimeout(function () {
         removeDivElement('menuBox');
         initMovement();
@@ -114,3 +116,17 @@ function muteSound(){
 
 volumeIcon.addEventListener("click",muteSound)
 mutedVolumeIcon.addEventListener("click",playSound)
+
+
+function switchLevel() {
+    createDivElement('level', 'level-2');
+    const gameArea = document.getElementById('level-1');
+    gameArea.innerHTML = '<h1>Level 1</h1><div id="display"></div>';
+    gameArea.children[1].innerHTML = getLevelOne();
+    scrollToPosition($(document).height() - gameArea.clientHeight, 2000);
+
+    setTimeout(function () {
+        removeDivElement('menuBox');
+        initMovement();
+    }, 2000)
+}
