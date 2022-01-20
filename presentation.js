@@ -6,6 +6,9 @@ const slides = document.querySelectorAll(".slide");
 const body = document.body;
 const menu = document.querySelector('.menuBox');
 const disk = document.querySelector('.fa-compact-disc');
+const volumeIcon = document.getElementsByClassName('fa-volume-up')[0];
+const mutedVolumeIcon = document.getElementsByClassName("fa-volume-mute")[0];
+const sound = new Audio("audio/menu audio/sample5.ogg");
 
 const playBtn = document.querySelector('.play-btn');
 
@@ -80,12 +83,34 @@ function rotate(){
     let button = document.getElementById("menuButton");
     let miniDisc = document.getElementById("miniDisc");
     // const sound = new Audio("audio/menu audio/mixkit-record-player-vinyl-scratch-702.wav")
-    const sound = new Audio("audio/menu audio/sample5.ogg")
     button.classList.add("rotating");
     miniDisc.classList.add("hideDisc");
+    playSoundForMenu()
+}
+
+
+function playSoundForMenu(){
     setTimeout(function() {
         sound.play()
     }, 1200)
 }
 
 
+function playSound(){
+    mutedVolumeIcon.style.display="none";
+    mutedVolumeIcon.style.visibility="hidden";
+    volumeIcon.style.display="block";
+    volumeIcon.style.visibility="visible";
+    sound.play()
+}
+
+function muteSound(){
+    volumeIcon.style.display="none";
+    volumeIcon.style.visibility="hidden";
+    mutedVolumeIcon.style.display="block";
+    mutedVolumeIcon.style.visibility="visible";
+    sound.pause()
+}
+
+volumeIcon.addEventListener("click",muteSound)
+mutedVolumeIcon.addEventListener("click",playSound)

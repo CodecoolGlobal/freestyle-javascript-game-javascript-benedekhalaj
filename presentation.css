@@ -104,7 +104,20 @@ ul {
     width: 100vw;
     background-color: orange;
 }
-
+.fa-volume-up{
+    position: absolute;
+    font-size: 3em;
+    left:0.8%;
+    top:1%;
+}
+.fa-volume-mute{
+    position: absolute;
+    font-size: 3em;
+    left:0.8%;
+    top:1%;
+    display: none;
+    visibility: hidden;
+}
 
 
 @keyframes rotate {
