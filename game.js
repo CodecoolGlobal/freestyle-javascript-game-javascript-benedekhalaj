@@ -14,7 +14,3 @@ function startMovement(event) {
         movement.go(event.key);
     }
 }
-
-// createTable();
-// initMovement();
-// initEditorMenu();

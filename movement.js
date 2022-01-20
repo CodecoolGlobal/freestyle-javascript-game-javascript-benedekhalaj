@@ -1,4 +1,4 @@
-import { getLevelOne } from "./levels.js";
+import { getLevelOne, getLevelTwo } from "./levels.js";
 import { initMovement } from "./game.js";
 
 function setDirection(direction) {
@@ -72,6 +72,13 @@ function switchLevel(currentLevel) {
         const thankYou = document.getElementById('thank-you');
         thankYou.innerHTML = '<h1>You have finished the game!<br><br>Thank you for playing!</h1>';
         scrollToPosition($(document).height() - thankYou.clientHeight, 2000);
+    } else if (currentLevel == 1) {
+        let newLevel = +currentLevel + 1
+        createDivElement('level', `level-${newLevel}`);
+        const gameArea = document.getElementById(`level-${newLevel}`);
+        gameArea.innerHTML = `<h1>Level ${newLevel}</h1><div id="display"></div>`;
+        gameArea.children[1].innerHTML = getLevelTwo();
+        scrollToPosition($(document).height() - gameArea.clientHeight, 2000);
     } else {
         let newLevel = +currentLevel + 1
         createDivElement('level', `level-${newLevel}`);

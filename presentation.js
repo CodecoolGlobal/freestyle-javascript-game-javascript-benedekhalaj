@@ -10,8 +10,6 @@ const volumeIcon = document.getElementsByClassName('fa-volume-up')[0];
 const mutedVolumeIcon = document.getElementsByClassName("fa-volume-mute")[0];
 const sound = new Audio("audio/menu audio/sample5.ogg");
 
-const playBtn = document.querySelector('.play-btn');
-
 menuButton.addEventListener('click', function() {
     disk.classList.add('start-spin');
 
@@ -25,7 +23,7 @@ menuButton.addEventListener('click', function() {
         disk.classList.remove('continue-spin');
         disk.classList.add('spin');
         body.classList.add('disable-scroll');
-        removeSlides(4);
+        removeSlides(5);
         createDivElement('level', 'level-1');
     }, 2250);
 
@@ -42,6 +40,9 @@ menuButton.addEventListener('click', function() {
         removeDivElement('menuBox');
         initMovement();
         createVolumeDiv();
+        const playBtn = document.querySelector('.play-btn');
+        volumeIcon.addEventListener("click",muteSound);
+        mutedVolumeIcon.addEventListener("click",playSound);
     }, 5500);
 
 playBtn.addEventListener('click', function () {
@@ -87,7 +88,7 @@ function scrollToPosition(position, duration) {
 
     setTimeout(function () {
         document.querySelector('html').style.scrollSnapType = 'y mandatory';
-    }, duration)
+    }, duration);
 }})
 
 
@@ -145,6 +146,4 @@ async function muteSound(){
     sound.pause();
 }
 
-volumeIcon.addEventListener("click",muteSound)
-mutedVolumeIcon.addEventListener("click",playSound)
 
