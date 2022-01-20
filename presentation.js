@@ -84,12 +84,8 @@ function rotate(){
     button.classList.add("rotating");
     miniDisc.classList.add("hideDisc");
     setTimeout(function() {
-        console.log('music')
         sound.play()
-    }, 1400)
-    setTimeout(function() {
-        console.log('animation ended')
-    }, 2300)
+    }, 1200)
 }
 
 
