@@ -31,6 +31,7 @@ function createElement(classOfElement) {
 
 function saveGameArea() {
     let textArea = document.querySelector("textarea");
+    console.log(textArea)
     let display = document.getElementById("display");
     textArea.innerText = display.innerHTML;
 }
