@@ -97,21 +97,42 @@ function playSoundForMenu(){
     }, 1200)
 }
 
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+async function fadeOut(audio){
+    for(var i=1;i>0;i-=0.1){
+        await sleep(100);
+        audio.volume = i
+    }
+}
+
+async function fadeIn(audio){
+    for(var i=0;i<1;i+=0.1){
+        await sleep(100);
+        audio.volume = i
+    }
+}
+
 
 function playSound(){
     mutedVolumeIcon.style.display="none";
     mutedVolumeIcon.style.visibility="hidden";
     volumeIcon.style.display="block";
     volumeIcon.style.visibility="visible";
+    fadeIn(sound)
     sound.play()
 }
 
-function muteSound(){
+async function muteSound(){
     volumeIcon.style.display="none";
     volumeIcon.style.visibility="hidden";
     mutedVolumeIcon.style.display="block";
     mutedVolumeIcon.style.visibility="visible";
-    sound.pause()
+    fadeOut(sound);
+    await sleep(1000);
+    sound.pause();
 }
 
 volumeIcon.addEventListener("click",muteSound)
