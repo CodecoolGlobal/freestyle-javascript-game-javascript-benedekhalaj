@@ -78,6 +78,7 @@ function switchLevel(currentLevel) {
     setTimeout(function () {
         removeDivElement(`level-${currentLevel}`);
         initMovement();
+        createVolumeDiv();
     }, 2000)
 }
 
@@ -105,4 +106,14 @@ function createDivElement(className, id) {
 function removeDivElement(id) {
     const div = document.getElementById(id);
     div.remove();
+}
+
+
+function createVolumeDiv() {
+    let volumeDiv = document.createElement('div');
+    volumeDiv.className = 'volumeButton';
+    volumeDiv.innerHTML = `<i class="fas fa-volume-mute"></i>
+    <i class="fas fa-volume-up"></i>`;
+    const level = document.querySelector('.level');
+    level.insertBefore(volumeDiv, level.firstChild);
 }

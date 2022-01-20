@@ -41,12 +41,22 @@ menuButton.addEventListener('click', function() {
     setTimeout(function () {
         removeDivElement('menuBox');
         initMovement();
+        createVolumeDiv();
     }, 5500);
 
 playBtn.addEventListener('click', function () {
     scrollToPosition($(document).height() - menu.clientHeight, 2000);
 })
 
+
+function createVolumeDiv() {
+    let volumeDiv = document.createElement('div');
+    volumeDiv.className = 'volumeButton';
+    volumeDiv.innerHTML = `<i class="fas fa-volume-mute"></i>
+    <i class="fas fa-volume-up"></i>`;
+    const level = document.querySelector('.level');
+    level.insertBefore(volumeDiv, level.firstChild);
+}
 
 function removeSlides(slideCount) {
     for (let i = 0; i < slideCount; i++) {
@@ -138,16 +148,3 @@ async function muteSound(){
 volumeIcon.addEventListener("click",muteSound)
 mutedVolumeIcon.addEventListener("click",playSound)
 
-
-function switchLevel() {
-    createDivElement('level', 'level-2');
-    const gameArea = document.getElementById('level-1');
-    gameArea.innerHTML = '<h1>Level 1</h1><div id="display"></div>';
-    gameArea.children[1].innerHTML = getLevelOne();
-    scrollToPosition($(document).height() - gameArea.clientHeight, 2000);
-
-    setTimeout(function () {
-        removeDivElement('menuBox');
-        initMovement();
-    }, 2000)
-}

@@ -120,6 +120,10 @@ ul {
     text-shadow:.10em .10em .25em rgba(0,0,0,.2);
 }
 
+#level-1 .volumeButton {
+    color: darkcyan;
+}
+
 #level-2 {
     background-color: orange;
 }
@@ -128,7 +132,7 @@ ul {
     background-color: darkcyan;
 }
 
-#level-2 h1, #level-3 h1 {
+#level-2 h1, #level-3 h1, #level-3 .volumeButton, #level-2 .volumeButton {
     color: white;
 }
 
