@@ -1,3 +1,6 @@
+import { getLevelOne } from "./levels.js";
+import { initMovement } from "./game.js";
+
 function setDirection(direction) {
     const arrowDirection = {
         "ArrowLeft": [0, -1],
@@ -19,16 +22,33 @@ export function go(direction) {
     let playerColumn = Number(player.dataset.column);
     let playerRow = Number(player.dataset.row);
     let neighbour = document.querySelector(`[data-row="${playerRow + directionRow}"][data-column="${playerColumn + directionCol}"]`);
+
     if (checkWin(player)) {
-        console.log("you've won");
+        const currentLevel = document.querySelector('.level');
+
+        setTimeout(function () {
+            player.classList.add('won');
+        }, 200);
+        
+        setTimeout(() => switchLevel(currentLevel.id.slice(-1)), 2000);
+
     } else if (neighbour === null) {
         player.classList.remove("player");
         let startingPoint = document.querySelector(`[data-row="${axisX}"][data-column="${axisY}"]`);
-        startingPoint.classList.add("player");
+
+        setTimeout(function () {
+            startingPoint.classList.add("player");
+            initMovement();
+        }, 400);
+        
     } else if (!neighbour.classList.contains("obstacle")) {
         player.classList.remove("player");
         neighbour.classList.add("player");
-        go(direction);
+        setTimeout(function () {
+            go(direction, true);
+        }, 35);
+    } else {
+        initMovement();
     }
 }
 
@@ -44,4 +64,45 @@ function getOriginCoordinates() {
         let axisY = 0;
         return [axisX, axisY]
     }
+}
+
+function switchLevel(currentLevel) {
+    console.log(currentLevel);
+    let newLevel = +currentLevel + 1
+    createDivElement('level', `level-${newLevel}`);
+    const gameArea = document.getElementById(`level-${newLevel}`);
+    gameArea.innerHTML = `<h1>Level ${newLevel}</h1><div id="display"></div>`;
+    gameArea.children[1].innerHTML = getLevelOne();
+    scrollToPosition($(document).height() - gameArea.clientHeight, 2000);
+
+    setTimeout(function () {
+        removeDivElement(`level-${currentLevel}`);
+        initMovement();
+    }, 2000)
+}
+
+function scrollToPosition(position, duration) {
+    document.querySelector('html').style.scrollSnapType = 'none';
+
+    $('html, body').animate({
+        scrollTop: position
+    }, duration, function(){
+    });
+
+    setTimeout(function () {
+        document.querySelector('html').style.scrollSnapType = 'y mandatory';
+    }, duration)
+}
+
+
+function createDivElement(className, id) {
+    let div = document.createElement('div');
+    div.id = id;
+    div.className = className;
+    document.body.appendChild(div);
+}
+
+function removeDivElement(id) {
+    const div = document.getElementById(id);
+    div.remove();
 }

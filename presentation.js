@@ -28,6 +28,7 @@ menuButton.addEventListener('click', function() {
         removeSlides(4);
         createDivElement('level', 'level-1');
     }, 2250);
+
     setTimeout(function () {
         const html = document.querySelector('html');
         html.classList.add('init-game');
@@ -36,6 +37,7 @@ menuButton.addEventListener('click', function() {
         gameArea.children[1].innerHTML = getLevelOne();
         scrollToPosition($(document).height() - gameArea.clientHeight, 2000)
     }, 3500);
+
     setTimeout(function () {
         removeDivElement('menuBox');
         initMovement();
@@ -95,22 +97,57 @@ function playSoundForMenu(){
     }, 1200)
 }
 
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+async function fadeOut(audio){
+    for(var i=1;i>0;i-=0.1){
+        await sleep(100);
+        audio.volume = i
+    }
+}
+
+async function fadeIn(audio){
+    for(var i=0;i<1;i+=0.1){
+        await sleep(100);
+        audio.volume = i
+    }
+}
+
 
 function playSound(){
     mutedVolumeIcon.style.display="none";
     mutedVolumeIcon.style.visibility="hidden";
     volumeIcon.style.display="block";
     volumeIcon.style.visibility="visible";
+    fadeIn(sound)
     sound.play()
 }
 
-function muteSound(){
+async function muteSound(){
     volumeIcon.style.display="none";
     volumeIcon.style.visibility="hidden";
     mutedVolumeIcon.style.display="block";
     mutedVolumeIcon.style.visibility="visible";
-    sound.pause()
+    fadeOut(sound);
+    await sleep(1000);
+    sound.pause();
 }
 
 volumeIcon.addEventListener("click",muteSound)
 mutedVolumeIcon.addEventListener("click",playSound)
+
+
+function switchLevel() {
+    createDivElement('level', 'level-2');
+    const gameArea = document.getElementById('level-1');
+    gameArea.innerHTML = '<h1>Level 1</h1><div id="display"></div>';
+    gameArea.children[1].innerHTML = getLevelOne();
+    scrollToPosition($(document).height() - gameArea.clientHeight, 2000);
+
+    setTimeout(function () {
+        removeDivElement('menuBox');
+        initMovement();
+    }, 2000)
+}
