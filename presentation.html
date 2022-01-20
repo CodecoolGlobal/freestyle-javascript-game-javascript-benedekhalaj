@@ -7,21 +7,32 @@
 			  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
 			  crossorigin="anonymous"></script>
     <script type="module" src="presentation.js" defer></script>
+    <script type="module" src="levels.js" defer></script>
+    <script type="module" src="game.js" defer></script>
     <title>presentation</title>
     <link rel="stylesheet" type="text/css" href="presentation.css">
     <link rel="stylesheet" type="text/css" href="menu.css">
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
 </head>
 <body>
    
 
     <div class="slide" id="slide-1">
-        <button class="play-btn">Play</button>
         <h1>team introduction</h1>
     </div>
 
     <div class="slide" id="slide-2">
-        <h1>features</h1>
+        
+        <video autoplay muted loop id="map-editor-video">
+            <source src="level_editor.webm" type="video/webm">
+        </video>
+
+        <div>
+            <h1>level editor</h1>
+        </div>
+        
+          
     </div>
 
     <div class="slide" id="slide-3">
@@ -44,9 +55,12 @@
         <div class=discContainer>
             <i class="fas fa-compact-disc"></i>
         </div>
-        <button onclick="rotate()" class="menuButton" id="menuButton">Start Game</button>
+        <button class="menuButton" id="menuButton">Start Game</button>
         <i class="fas fa-compact-disc" id="miniDisc"></i>
     </div>
-
+    <div class="volumeButton">
+        <i class="fas fa-volume-mute"></i>
+        <i class="fas fa-volume-up"></i>
+    </div>
 </body>
 </html>
