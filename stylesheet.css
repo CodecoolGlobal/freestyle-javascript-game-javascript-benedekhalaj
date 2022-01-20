@@ -114,8 +114,8 @@ html {
     background: var(--player-primary-color) !important;
     transform: translateZ(1em);
     transform-style: preserve-3d;
-    transition-property: transform;
-    transition: 0.7s;
+    transition-property: transform ease-in;
+    transition: 0.15s;
 }
 .player:before, .player:after {
     content: "";

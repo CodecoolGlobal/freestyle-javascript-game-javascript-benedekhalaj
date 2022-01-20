@@ -1,3 +1,5 @@
+import { initMovement } from "./game.js";
+
 function setDirection(direction) {
     const arrowDirection = {
         "ArrowLeft": [0, -1],
@@ -25,10 +27,15 @@ export function go(direction) {
         player.classList.remove("player");
         let startingPoint = document.querySelector(`[data-row="${axisX}"][data-column="${axisY}"]`);
         startingPoint.classList.add("player");
+        initMovement();
     } else if (!neighbour.classList.contains("obstacle")) {
         player.classList.remove("player");
         neighbour.classList.add("player");
-        go(direction);
+        setTimeout(function () {
+            go(direction, true);
+        }, 35);
+    } else {
+        initMovement();
     }
 }
 
