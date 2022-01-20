@@ -31,8 +31,8 @@ menuButton.addEventListener('click', function() {
         const html = document.querySelector('html');
         html.classList.add('init-game');
         const gameArea = document.getElementById('level-1');
-        gameArea.innerHTML = '<h1>Level 1</h1><div id="display"></div>';
-        gameArea.children[1].innerHTML = getLevelOne();
+        gameArea.innerHTML = '<h1>Level 1</h1><p>by Benedek</p><div id="display"></div>';
+        gameArea.children[2].innerHTML = getLevelOne();
         scrollToPosition($(document).height() - gameArea.clientHeight, 2000)
     }, 3500);
 
