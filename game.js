@@ -15,6 +15,6 @@ function startMovement(event) {
     }
 }
 
-// createTable();
-// initMovement();
-// initEditorMenu();
+createTable();
+initMovement();
+initEditorMenu();
