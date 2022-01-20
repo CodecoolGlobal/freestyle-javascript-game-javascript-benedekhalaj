@@ -1,10 +1,11 @@
-const AXIS_X_START = 0;
-const AXIS_Y_START = 0;
+import { getOriginCoordinates } from "./movement.js"
+
 
 function resetPosition(){
+  let [axisX, axisY] = getOriginCoordinates();
     let player = document.querySelector(".player");
     player.classList.remove("player");
-    let startingPoint = document.querySelector(`[data-row="${AXIS_Y_START}"][data-column="${AXIS_X_START}"]`);
+    let startingPoint = document.querySelector(`[data-row="${axisX}"][data-column="${axisY}"]`);
     startingPoint.classList.add("player");
 }
 
