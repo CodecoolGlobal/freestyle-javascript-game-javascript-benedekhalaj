@@ -140,6 +140,12 @@ ul {
     text-shadow:.10em .10em .25em rgba(0,0,0,.2);
 }
 
+.level p {
+    color: darkcyan;
+    text-align: center;
+    font-size: 2.5em;
+}
+
 #level-1 .volumeButton {
     color: darkcyan;
 }
@@ -152,7 +158,7 @@ ul {
     background-color: darkcyan;
 }
 
-#level-2 h1, #level-3 h1, #level-3 .volumeButton, #level-2 .volumeButton {
+#level-2 h1, #level-3 h1, #level-3 .volumeButton, #level-2 .volumeButton, #level-2 p, #level-3 p {
     color: white;
 }
 
