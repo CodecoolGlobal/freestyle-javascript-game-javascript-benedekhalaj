@@ -16,7 +16,7 @@
     position: absolute;
     left: 8%;
     top: 5%;
-    font-size: 6rem;
+    font-size: 11em;
 }
 
 .menuButton{
@@ -25,13 +25,17 @@
     left: 5%;
     bottom: 13%;
     position: absolute;
-    background-color: rgba(0,0,0,.25);
     font-size: 2.5em;
-    border-radius: 15px;
-    border: black 2px solid;
+    border: floralwhite 2px solid;
+    border-radius: 5px;
     z-index: 1;
+    background-color: floralwhite;
+    color: orange;
+    transition: 0.3s ease;
+    transition-property: background-color, color;
 }
 #miniDisc{
+    color: orange;
     font-size: 2em;
     position: absolute;
     left: 41%;
@@ -42,8 +46,10 @@
 
 }
 .menuButton:hover{
+    background-color: orange;
+    color: white;
     cursor: pointer;
-    background-color: rgba(0,0,0,.3);
+    transition: 0.3s ease;
 }
 .discContainer{
     display: flex;
@@ -72,11 +78,13 @@
     animation: right 2000ms 1 ease-out forwards;
     transform-origin: bottom right;
 }
+
 .hideDisc{
     visibility: hidden;
     opacity: 0;
     transition: visibility 0s 2s, opacity 0.1s linear;
 }
+
 @keyframes spin {
     from {
         transform:rotate(0deg);
@@ -105,6 +113,6 @@
 }
 
 @keyframes right {
-    50%{background-color: black;}
-    100%{transform: rotate(119deg); background-color: black; border-radius: 60px;}
+    50%{background-color: black;  border-color: black; color: black;}
+    100%{transform: rotate(119deg); background-color: black; border-radius: 60px; border-color: black; color: black;}
 }
