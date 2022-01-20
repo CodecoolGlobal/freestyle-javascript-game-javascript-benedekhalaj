@@ -11,6 +11,6 @@ function startMovement(event) {
     let allowedKeys = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'];
     if (allowedKeys.includes(event.key)) {
         document.removeEventListener('keydown', startMovement);
-        movement.go(event.key);
+        movement.go(event.key, 1);
     }
 }
