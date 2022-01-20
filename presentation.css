@@ -12,7 +12,7 @@ html {
 
 body {
     margin: 0;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.4)) , url('/background.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8),rgba(0, 0, 0, 0.8)) , url('/background.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
@@ -43,7 +43,7 @@ ul {
     text-align: center;
 }
 
-#slide-3, #slide-5, #slide-2 {
+#slide-5, #slide-2 {
     color: black;
     background-color: floralwhite;
 }
@@ -55,6 +55,15 @@ ul {
 #slide-2 div h1 {
     margin-bottom: 50px;
     color: black;
+}
+
+#slide-3 {
+    background-color: darkcyan;
+    color: floralwhite;
+}
+
+#slide-4 {
+    background: orange;
 }
 
 #map-editor-video {

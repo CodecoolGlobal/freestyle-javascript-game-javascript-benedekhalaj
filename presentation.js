@@ -79,7 +79,8 @@ function scrollToPosition(position, duration) {
 function rotate(){
     let button = document.getElementById("menuButton");
     let miniDisc = document.getElementById("miniDisc");
-    const sound = new Audio("audio/menu audio/mixkit-record-player-vinyl-scratch-702.wav")
+    // const sound = new Audio("audio/menu audio/mixkit-record-player-vinyl-scratch-702.wav")
+    const sound = new Audio("audio/menu audio/sample5.ogg")
     button.classList.add("rotating");
     miniDisc.classList.add("hideDisc");
     setTimeout(function() {
