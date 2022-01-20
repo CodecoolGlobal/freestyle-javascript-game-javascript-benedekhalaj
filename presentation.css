@@ -162,6 +162,19 @@ ul {
 }
 
 
+.volumeButton {
+    position: absolute;
+    left: 2%;
+    top: 7%;
+    opacity: 0;
+    transition: 0.3s ease;
+}
+
+.show-volumeButton {
+    opacity: 1;
+    transition: 0.3s ease;
+}
+
 
 .fa-volume-up{
     position: absolute;

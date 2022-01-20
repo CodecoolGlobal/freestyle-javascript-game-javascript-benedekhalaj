@@ -39,25 +39,15 @@ menuButton.addEventListener('click', function() {
     setTimeout(function () {
         removeDivElement('menuBox');
         initMovement();
-        createVolumeDiv();
-        const playBtn = document.querySelector('.play-btn');
-        volumeIcon.addEventListener("click",muteSound);
-        mutedVolumeIcon.addEventListener("click",playSound);
+        const volumeButton = document.querySelector('.volumeButton');
+        volumeButton.style.color = 'darkcyan';
+        volumeButton.classList.add('show-volumeButton');
     }, 5500);
 
 playBtn.addEventListener('click', function () {
     scrollToPosition($(document).height() - menu.clientHeight, 2000);
 })
 
-
-function createVolumeDiv() {
-    let volumeDiv = document.createElement('div');
-    volumeDiv.className = 'volumeButton';
-    volumeDiv.innerHTML = `<i class="fas fa-volume-mute"></i>
-    <i class="fas fa-volume-up"></i>`;
-    const level = document.querySelector('.level');
-    level.insertBefore(volumeDiv, level.firstChild);
-}
 
 function removeSlides(slideCount) {
     for (let i = 0; i < slideCount; i++) {
@@ -147,3 +137,5 @@ async function muteSound(){
 }
 
 
+volumeIcon.addEventListener("click", muteSound);
+mutedVolumeIcon.addEventListener("click", playSound);

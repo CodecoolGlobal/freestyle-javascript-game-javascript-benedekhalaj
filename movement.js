@@ -67,11 +67,22 @@ function getOriginCoordinates() {
 }
 
 function switchLevel(currentLevel) {
+    const volumeButton = document.querySelector('.volumeButton');
+    volumeButton.classList.remove('show-volumeButton');
     if (currentLevel == 3) {
         createDivElement('level', 'thank-you');
         const thankYou = document.getElementById('thank-you');
         thankYou.innerHTML = '<h1>You have finished the game!<br><br>Thank you for playing!</h1>';
         scrollToPosition($(document).height() - thankYou.clientHeight, 2000);
+        volumeButton.style.color = 'darkcyan';
+    } else if (currentLevel == 2) {
+        let newLevel = +currentLevel + 1
+        createDivElement('level', `level-${newLevel}`);
+        const gameArea = document.getElementById(`level-${newLevel}`);
+        gameArea.innerHTML = `<h1>Level ${newLevel}</h1><div id="display"></div>`;
+        gameArea.children[1].innerHTML = getLevelTwo();
+        scrollToPosition($(document).height() - gameArea.clientHeight, 2000);
+        volumeButton.style.color = 'white';
     } else if (currentLevel == 1) {
         let newLevel = +currentLevel + 1
         createDivElement('level', `level-${newLevel}`);
@@ -79,6 +90,7 @@ function switchLevel(currentLevel) {
         gameArea.innerHTML = `<h1>Level ${newLevel}</h1><div id="display"></div>`;
         gameArea.children[1].innerHTML = getLevelTwo();
         scrollToPosition($(document).height() - gameArea.clientHeight, 2000);
+        volumeButton.style.color = 'white';
     } else {
         let newLevel = +currentLevel + 1
         createDivElement('level', `level-${newLevel}`);
@@ -88,11 +100,11 @@ function switchLevel(currentLevel) {
         scrollToPosition($(document).height() - gameArea.clientHeight, 2000);
     }
     
-
+    
     setTimeout(function () {
         removeDivElement(`level-${currentLevel}`);
         initMovement();
-        createVolumeDiv();
+        volumeButton.classList.add('show-volumeButton');
     }, 2000)
 }
 
