@@ -28,15 +28,19 @@ export function go(direction) {
 
         setTimeout(function () {
             player.classList.add('won');
-        }, 400);
+        }, 200);
         
         setTimeout(() => switchLevel(currentLevel.id.slice(-1)), 2000);
 
     } else if (neighbour === null) {
         player.classList.remove("player");
         let startingPoint = document.querySelector(`[data-row="${axisX}"][data-column="${axisY}"]`);
-        startingPoint.classList.add("player");
-        initMovement();
+
+        setTimeout(function () {
+            startingPoint.classList.add("player");
+            initMovement();
+        }, 400);
+        
     } else if (!neighbour.classList.contains("obstacle")) {
         player.classList.remove("player");
         neighbour.classList.add("player");
@@ -73,6 +77,7 @@ function switchLevel(currentLevel) {
 
     setTimeout(function () {
         removeDivElement(`level-${currentLevel}`);
+        initMovement();
     }, 2000)
 }
 
