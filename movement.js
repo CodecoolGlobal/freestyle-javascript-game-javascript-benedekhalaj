@@ -24,6 +24,9 @@ export function go(direction) {
     if (checkWin(player)) {
         const currentLevel = document.querySelector('.level');
         console.log(currentLevel.id[-1]);
+
+        player.classList.add('won');
+
         setTimeout(switchLevel, 2000);
     } else if (neighbour === null) {
         player.classList.remove("player");
