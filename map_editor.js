@@ -1,5 +1,5 @@
-const GAME_AREA_HEIGHT = 10;
-const GAME_AREA_WIDTH = 10;
+const GAME_AREA_HEIGHT = 12;
+const GAME_AREA_WIDTH = 12;
 
 
 export function createTable() {
@@ -7,10 +7,10 @@ export function createTable() {
     const display = document.getElementById("display");
     for (let i = 0; i < GAME_AREA_HEIGHT; i++) {
         for (let j = 0; j < GAME_AREA_WIDTH; j++) {
-                let newTile = createElement();
-                newTile.dataset.row = i;
-                newTile.dataset.column = j;
-                display.appendChild(newTile);
+            let newTile = createElement();
+            newTile.dataset.row = i;
+            newTile.dataset.column = j;
+            display.appendChild(newTile);
         }
     }
 }
@@ -106,13 +106,13 @@ function addClassToTile(targetTile) {
     if (uniqueTypes.includes(userChoice.value)) {
         if (checkIfUniqueTileExists(userChoice.value).length === 0) {
             targetTile.classList.add(userChoice.value);
+            saveOrigin();
         } else {
             alert("in your dreams");
         }
     } else {
         targetTile.classList.add(userChoice.value);
     }
-
 }
 
 
@@ -152,4 +152,16 @@ function copyToClipboard() {
     generatedMapHtml.select();
     navigator.clipboard.writeText(generatedMapHtml.value);
     alert("copied map html");
+}
+
+function saveOrigin() {
+    let player = document.querySelector(".player");
+    let coordinates = [player.dataset.row, player.dataset.column];
+    let playerOrigin = document.createElement("input");
+    let display = document.getElementById("display");
+    playerOrigin.type = "hidden";
+    playerOrigin.id = "player-origin"
+    playerOrigin.dataset.originX = coordinates[0];
+    playerOrigin.dataset.originY = coordinates[1];
+    display.appendChild(playerOrigin);
 }
