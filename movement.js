@@ -1,4 +1,4 @@
-import { getLevelOne, getLevelTwo } from "./levels.js";
+import { getLevelOne, getLevelTwo, getLevelThree } from "./levels.js";
 import { initMovement } from "./game.js";
 
 function setDirection(direction) {
@@ -52,7 +52,7 @@ export function go(direction) {
     }
 }
 
-function getOriginCoordinates() {
+export function getOriginCoordinates() {
     let coordinates = document.getElementById("playerOrigin");
     console.log(coordinates);
     if (coordinates) {
@@ -80,7 +80,7 @@ function switchLevel(currentLevel) {
         createDivElement('level', `level-${newLevel}`);
         const gameArea = document.getElementById(`level-${newLevel}`);
         gameArea.innerHTML = `<h1>Level ${newLevel}</h1><div id="display"></div>`;
-        gameArea.children[1].innerHTML = getLevelTwo();
+        gameArea.children[1].innerHTML = getLevelThree();
         scrollToPosition($(document).height() - gameArea.clientHeight, 2000);
         volumeButton.style.color = 'white';
     } else if (currentLevel == 1) {
@@ -132,14 +132,4 @@ function createDivElement(className, id) {
 function removeDivElement(id) {
     const div = document.getElementById(id);
     div.remove();
-}
-
-
-function createVolumeDiv() {
-    let volumeDiv = document.createElement('div');
-    volumeDiv.className = 'volumeButton';
-    volumeDiv.innerHTML = `<i class="fas fa-volume-mute"></i>
-    <i class="fas fa-volume-up"></i>`;
-    const level = document.querySelector('.level');
-    level.insertBefore(volumeDiv, level.firstChild);
 }
