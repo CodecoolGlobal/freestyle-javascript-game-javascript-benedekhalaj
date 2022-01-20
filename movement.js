@@ -82,16 +82,16 @@ function switchLevel(currentLevel) {
         let newLevel = +currentLevel + 1
         createDivElement('level', `level-${newLevel}`);
         const gameArea = document.getElementById(`level-${newLevel}`);
-        gameArea.innerHTML = `<h1>Level ${newLevel}</h1><div id="display"></div>`;
-        gameArea.children[1].innerHTML = getLevelThree();
+        gameArea.innerHTML = `<h1>Level ${newLevel}</h1><p>by Doni</p><div id="display"></div>`;
+        gameArea.children[2].innerHTML = getLevelThree();
         scrollToPosition($(document).height() - gameArea.clientHeight, 2000);
         volumeButton.style.color = 'white';
     } else if (currentLevel == 1) {
         let newLevel = +currentLevel + 1
         createDivElement('level', `level-${newLevel}`);
         const gameArea = document.getElementById(`level-${newLevel}`);
-        gameArea.innerHTML = `<h1>Level ${newLevel}</h1><div id="display"></div>`;
-        gameArea.children[1].innerHTML = getLevelTwo();
+        gameArea.innerHTML = `<h1>Level ${newLevel}</h1><p>by LatNat</p><div id="display"></div>`;
+        gameArea.children[2].innerHTML = getLevelTwo();
         scrollToPosition($(document).height() - gameArea.clientHeight, 2000);
         volumeButton.style.color = 'white';
     } else {
