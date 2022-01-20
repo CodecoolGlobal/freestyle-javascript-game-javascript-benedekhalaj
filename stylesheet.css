@@ -59,7 +59,7 @@ html {
 }
 
 #button.save,
-#button.load,
+#button.set-origin,
 #button.generate-map,
 #button.copy {
     background-color: lightgreen;

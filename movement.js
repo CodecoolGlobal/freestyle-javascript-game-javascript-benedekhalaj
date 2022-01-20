@@ -13,6 +13,7 @@ function checkWin(player) {
 }
 
 export function go(direction) {
+    let [axisX, axisY] = getOriginCoordinates();
     let [directionRow, directionCol] = setDirection(direction);
     let player = document.querySelector(".player");
     let playerColumn = Number(player.dataset.column);
@@ -22,8 +23,7 @@ export function go(direction) {
         console.log("you've won");
     } else if (neighbour === null) {
         player.classList.remove("player");
-        let axisX, axisY = getOriginCoordinates();
-        let startingPoint = document.querySelector(`[data-row="${axisY}"][data-column="${axisX}"]`);
+        let startingPoint = document.querySelector(`[data-row="${axisX}"][data-column="${axisY}"]`);
         startingPoint.classList.add("player");
     } else if (!neighbour.classList.contains("obstacle")) {
         player.classList.remove("player");
@@ -33,11 +33,15 @@ export function go(direction) {
 }
 
 function getOriginCoordinates() {
-    const coordinates = document.querySelector("#player-origin");
+    let coordinates = document.getElementById("playerOrigin");
     console.log(coordinates);
-    let axisX = coordinates.dataset.axisX;
-    console.log(axisX);
-    let axisY = coordinates.dataset.axisY;
-    console.log(axisY);
-    return [axisX, axisY]
+    if (coordinates) {
+        let axisX = +coordinates.dataset.originX;
+        let axisY = +coordinates.dataset.originY;
+        return [axisX, axisY]
+    } else {
+        let axisX = 0;
+        let axisY = 0;
+        return [axisX, axisY]
+    }
 }

@@ -51,12 +51,21 @@ function createCopyButton() {
 
 function createGenerateMapButton() {
     let generateButton = createButtonFor("new map");
-    generateButton.className = "generate-map"
+    generateButton.className = "generate-map";
     generateButton.addEventListener("click", (e) => {
         deleteTable();
         createTable();
     });
     return generateButton
+}
+
+function createSetOriginButton() {
+    let setOriginButton = createButtonFor("set origin");
+    setOriginButton.className = "set-origin";
+    setOriginButton.addEventListener("click", (e) => {
+        saveOrigin();
+    });
+    return setOriginButton
 }
 
 function createButtonFor(buttonText) {
@@ -81,9 +90,11 @@ export function initEditorMenu() {
     let saveMapButton = createSaveButton();
     let generateMapButton = createGenerateMapButton();
     let copyMapHtmlButton = createCopyButton();
+    let setOriginButton = createSetOriginButton();
     menu.appendChild(copyMapHtmlButton);
     menu.appendChild(saveMapButton);
     menu.appendChild(generateMapButton);
+    menu.appendChild(setOriginButton);
     document.body.appendChild(menu);
 }
 
@@ -106,7 +117,6 @@ function addClassToTile(targetTile) {
     if (uniqueTypes.includes(userChoice.value)) {
         if (checkIfUniqueTileExists(userChoice.value).length === 0) {
             targetTile.classList.add(userChoice.value);
-            saveOrigin();
         } else {
             alert("in your dreams");
         }
@@ -160,7 +170,7 @@ function saveOrigin() {
     let playerOrigin = document.createElement("input");
     let display = document.getElementById("display");
     playerOrigin.type = "hidden";
-    playerOrigin.id = "player-origin"
+    playerOrigin.id = "playerOrigin"
     playerOrigin.dataset.originX = coordinates[0];
     playerOrigin.dataset.originY = coordinates[1];
     display.appendChild(playerOrigin);
