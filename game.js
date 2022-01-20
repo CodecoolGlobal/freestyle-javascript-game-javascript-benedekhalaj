@@ -1,7 +1,16 @@
-initGame();
+import * as movement from "./movement.js"
+import { initEditorMenu, createTable } from "./map_editor.js"
 
-function initGame() {
 
-    // Your game can start here, but define separate functions, don't write everything in here :)
+export function initMovement() {
+    document.addEventListener('keydown', startMovement
+    );
+}
 
+function startMovement(event) {
+    let allowedKeys = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'];
+    if (allowedKeys.includes(event.key)) {
+        document.removeEventListener('keydown', startMovement);
+        movement.go(event.key);
+    }
 }
