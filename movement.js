@@ -21,13 +21,16 @@ export function go(direction) {
     let playerColumn = Number(player.dataset.column);
     let playerRow = Number(player.dataset.row);
     let neighbour = document.querySelector(`[data-row="${playerRow + directionRow}"][data-column="${playerColumn + directionCol}"]`);
+
     if (checkWin(player)) {
         const currentLevel = document.querySelector('.level');
-        console.log(currentLevel.id[-1]);
 
-        player.classList.add('won');
+        setTimeout(function () {
+            player.classList.add('won');
+        }, 400);
+        
+        setTimeout(() => switchLevel(currentLevel.id.slice(-1)), 2000);
 
-        setTimeout(switchLevel, 2000);
     } else if (neighbour === null) {
         player.classList.remove("player");
         let startingPoint = document.querySelector(`[data-row="${axisX}"][data-column="${axisY}"]`);
@@ -53,15 +56,17 @@ function getOriginCoordinates() {
     }
 }
 
-function switchLevel() {
-    createDivElement('level', 'level-2');
-    const gameArea = document.getElementById('level-2');
-    gameArea.innerHTML = '<h1>Level 2</h1><div id="display"></div>';
+function switchLevel(currentLevel) {
+    console.log(currentLevel);
+    let newLevel = +currentLevel + 1
+    createDivElement('level', `level-${newLevel}`);
+    const gameArea = document.getElementById(`level-${newLevel}`);
+    gameArea.innerHTML = `<h1>Level ${newLevel}</h1><div id="display"></div>`;
     gameArea.children[1].innerHTML = getLevelOne();
     scrollToPosition($(document).height() - gameArea.clientHeight, 2000);
 
     setTimeout(function () {
-        removeDivElement('level-1');
+        removeDivElement(`level-${currentLevel}`);
     }, 2000)
 }
 
