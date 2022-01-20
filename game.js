@@ -2,7 +2,7 @@ import * as movement from "./movement.js"
 import { initEditorMenu, createTable } from "./map_editor.js"
 
 
-function initMovement() {
+export function initMovement() {
     document.addEventListener('keydown', function(event) {
         let allowedKeys = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'];
         if (allowedKeys.includes(event.key)) {
@@ -11,6 +11,6 @@ function initMovement() {
     });
 }
 
-createTable();
-initMovement();
-initEditorMenu();
+// createTable();
+// initMovement();
+// initEditorMenu();
