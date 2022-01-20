@@ -17,6 +17,7 @@
     left: 8%;
     top: 5%;
     font-size: 11em;
+    color: black;
 }
 
 .menuButton{
@@ -26,10 +27,10 @@
     bottom: 13%;
     position: absolute;
     font-size: 2.5em;
-    border: floralwhite 2px solid;
+    border: black 2px solid;
     border-radius: 5px;
     z-index: 1;
-    background-color: floralwhite;
+    background-color: black;
     color: orange;
     transition: 0.3s ease;
     transition-property: background-color, color;
@@ -47,7 +48,7 @@
 }
 .menuButton:hover{
     background-color: orange;
-    color: white;
+    color: black;
     cursor: pointer;
     transition: 0.3s ease;
 }
@@ -56,7 +57,7 @@
 }
 .menuBox .discContainer .fa-compact-disc{
     font-size: 44em;
-    color: #3b3c36;
+    color: black;
     position: absolute;
     right:12%;
     top: 14%;
@@ -114,5 +115,5 @@
 
 @keyframes right {
     50%{background-color: black;  border-color: black; color: black;}
-    100%{transform: rotate(119deg); background-color: black; border-radius: 60px; border-color: black; color: black;}
+    100%{transform: rotate(119deg); background-color: rgb(61, 61, 61); border-radius: 60px; border-color: rgb(61, 61, 61); color: rgb(61, 61, 61);}
 }

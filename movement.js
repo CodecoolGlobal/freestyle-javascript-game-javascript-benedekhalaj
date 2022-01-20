@@ -1,4 +1,4 @@
-import { getLevelOne } from "./levels.js";
+import { getLevelOne, getLevelTwo } from "./levels.js";
 import { initMovement } from "./game.js";
 
 function setDirection(direction) {
@@ -67,17 +67,32 @@ function getOriginCoordinates() {
 }
 
 function switchLevel(currentLevel) {
-    console.log(currentLevel);
-    let newLevel = +currentLevel + 1
-    createDivElement('level', `level-${newLevel}`);
-    const gameArea = document.getElementById(`level-${newLevel}`);
-    gameArea.innerHTML = `<h1>Level ${newLevel}</h1><div id="display"></div>`;
-    gameArea.children[1].innerHTML = getLevelOne();
-    scrollToPosition($(document).height() - gameArea.clientHeight, 2000);
+    if (currentLevel == 3) {
+        createDivElement('level', 'thank-you');
+        const thankYou = document.getElementById('thank-you');
+        thankYou.innerHTML = '<h1>You have finished the game!<br><br>Thank you for playing!</h1>';
+        scrollToPosition($(document).height() - thankYou.clientHeight, 2000);
+    } else if (currentLevel == 1) {
+        let newLevel = +currentLevel + 1
+        createDivElement('level', `level-${newLevel}`);
+        const gameArea = document.getElementById(`level-${newLevel}`);
+        gameArea.innerHTML = `<h1>Level ${newLevel}</h1><div id="display"></div>`;
+        gameArea.children[1].innerHTML = getLevelTwo();
+        scrollToPosition($(document).height() - gameArea.clientHeight, 2000);
+    } else {
+        let newLevel = +currentLevel + 1
+        createDivElement('level', `level-${newLevel}`);
+        const gameArea = document.getElementById(`level-${newLevel}`);
+        gameArea.innerHTML = `<h1>Level ${newLevel}</h1><div id="display"></div>`;
+        gameArea.children[1].innerHTML = getLevelOne();
+        scrollToPosition($(document).height() - gameArea.clientHeight, 2000);
+    }
+    
 
     setTimeout(function () {
         removeDivElement(`level-${currentLevel}`);
         initMovement();
+        createVolumeDiv();
     }, 2000)
 }
 
@@ -105,4 +120,14 @@ function createDivElement(className, id) {
 function removeDivElement(id) {
     const div = document.getElementById(id);
     div.remove();
+}
+
+
+function createVolumeDiv() {
+    let volumeDiv = document.createElement('div');
+    volumeDiv.className = 'volumeButton';
+    volumeDiv.innerHTML = `<i class="fas fa-volume-mute"></i>
+    <i class="fas fa-volume-up"></i>`;
+    const level = document.querySelector('.level');
+    level.insertBefore(volumeDiv, level.firstChild);
 }

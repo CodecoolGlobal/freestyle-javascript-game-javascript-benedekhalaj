@@ -10,8 +10,6 @@ const volumeIcon = document.getElementsByClassName('fa-volume-up')[0];
 const mutedVolumeIcon = document.getElementsByClassName("fa-volume-mute")[0];
 const sound = new Audio("audio/menu audio/sample5.ogg");
 
-const playBtn = document.querySelector('.play-btn');
-
 menuButton.addEventListener('click', function() {
     disk.classList.add('start-spin');
 
@@ -25,7 +23,7 @@ menuButton.addEventListener('click', function() {
         disk.classList.remove('continue-spin');
         disk.classList.add('spin');
         body.classList.add('disable-scroll');
-        removeSlides(4);
+        removeSlides(5);
         createDivElement('level', 'level-1');
     }, 2250);
 
@@ -41,12 +39,25 @@ menuButton.addEventListener('click', function() {
     setTimeout(function () {
         removeDivElement('menuBox');
         initMovement();
+        createVolumeDiv();
+        const playBtn = document.querySelector('.play-btn');
+        volumeIcon.addEventListener("click",muteSound);
+        mutedVolumeIcon.addEventListener("click",playSound);
     }, 5500);
 
 playBtn.addEventListener('click', function () {
     scrollToPosition($(document).height() - menu.clientHeight, 2000);
 })
 
+
+function createVolumeDiv() {
+    let volumeDiv = document.createElement('div');
+    volumeDiv.className = 'volumeButton';
+    volumeDiv.innerHTML = `<i class="fas fa-volume-mute"></i>
+    <i class="fas fa-volume-up"></i>`;
+    const level = document.querySelector('.level');
+    level.insertBefore(volumeDiv, level.firstChild);
+}
 
 function removeSlides(slideCount) {
     for (let i = 0; i < slideCount; i++) {
@@ -77,7 +88,7 @@ function scrollToPosition(position, duration) {
 
     setTimeout(function () {
         document.querySelector('html').style.scrollSnapType = 'y mandatory';
-    }, duration)
+    }, duration);
 }})
 
 
@@ -135,19 +146,4 @@ async function muteSound(){
     sound.pause();
 }
 
-volumeIcon.addEventListener("click",muteSound)
-mutedVolumeIcon.addEventListener("click",playSound)
 
-
-function switchLevel() {
-    createDivElement('level', 'level-2');
-    const gameArea = document.getElementById('level-1');
-    gameArea.innerHTML = '<h1>Level 1</h1><div id="display"></div>';
-    gameArea.children[1].innerHTML = getLevelOne();
-    scrollToPosition($(document).height() - gameArea.clientHeight, 2000);
-
-    setTimeout(function () {
-        removeDivElement('menuBox');
-        initMovement();
-    }, 2000)
-}

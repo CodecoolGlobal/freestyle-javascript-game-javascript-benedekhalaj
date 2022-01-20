@@ -19,8 +19,19 @@
 <body>
    
 
-    <div class="slide" id="slide-1">
-        <h1>team introduction</h1>
+    <div class="slide" id="slide-intro">
+        <h1>compact disk</h1>
+        <p>a freestyle javascript game</p>
+    </div>
+
+    <div class="slide" id="slide-features">
+        <h1>features</h1>
+        <ul>
+            <li>snap-style presentation</li>
+            <li>isometric visuals</li>
+            <li>original score</li>
+            <li>animation</li>
+        </ul>
     </div>
 
     <div class="slide" id="slide-2">
@@ -36,19 +47,22 @@
           
     </div>
 
-    <div class="slide" id="slide-3">
+    <div class="slide" id="slide-git">
+        <h1>git workflow</h1>
+        <video autoplay muted loop id="git-video">
+            <source src="branches.webm" type="video/webm">
+        </video>
         
-        <h1>git history</h1>
-        <ul>
-            <li>snap-style presentation</li>
-            <li>full javascript game</li>
-            <li>original soundtrack</li>
-            <li>original soundtrack</li>
-        </ul>
+        
     </div>
 
-    <div class="slide" id="slide-4">
+    <div class="slide" id="slide-code-snippet">
         <h1>code snippet</h1>
+        <video autoplay muted loop id="code-snippet-video">
+            <source src="code_snippet.webm" type="video/webm">
+        </video>
+
+        
     </div>
 
     <div class="menuBox" id="menuBox">
@@ -58,10 +72,6 @@
         </div>
         <button class="menuButton" id="menuButton">start game</button>
         <i class="fas fa-compact-disc" id="miniDisc"></i>
-    </div>
-    <div class="volumeButton">
-        <i class="fas fa-volume-mute"></i>
-        <i class="fas fa-volume-up"></i>
     </div>
 </body>
 </html>
