@@ -1,7 +1,3 @@
-const AXIS_X_START = 0;
-const AXIS_Y_START = 0;
-
-
 function setDirection(direction) {
     const arrowDirection = {
         "ArrowLeft": [0, -1],
@@ -12,22 +8,40 @@ function setDirection(direction) {
     return arrowDirection[direction]
 }
 
+function checkWin(player) {
+    return player.classList.contains("goal");
+}
 
 export function go(direction) {
+    let [axisX, axisY] = getOriginCoordinates();
     let [directionRow, directionCol] = setDirection(direction);
     let player = document.querySelector(".player");
     let playerColumn = Number(player.dataset.column);
     let playerRow = Number(player.dataset.row);
     let neighbour = document.querySelector(`[data-row="${playerRow + directionRow}"][data-column="${playerColumn + directionCol}"]`);
-    if (neighbour.classList.contains("goal")){
-        console.log("you won")
+    if (checkWin(player)) {
+        console.log("you've won");
     } else if (neighbour === null) {
-        player.classList.remove("player", `${playerIcon}`);
-        let startingPoint = document.querySelector(`[data-row="${AXIS_Y_START}"][data-column="${AXIS_X_START}"]`);
+        player.classList.remove("player");
+        let startingPoint = document.querySelector(`[data-row="${axisX}"][data-column="${axisY}"]`);
         startingPoint.classList.add("player");
     } else if (!neighbour.classList.contains("obstacle")) {
         player.classList.remove("player");
         neighbour.classList.add("player");
         go(direction);
+    }
+}
+
+function getOriginCoordinates() {
+    let coordinates = document.getElementById("playerOrigin");
+    console.log(coordinates);
+    if (coordinates) {
+        let axisX = +coordinates.dataset.originX;
+        let axisY = +coordinates.dataset.originY;
+        return [axisX, axisY]
+    } else {
+        let axisX = 0;
+        let axisY = 0;
+        return [axisX, axisY]
     }
 }

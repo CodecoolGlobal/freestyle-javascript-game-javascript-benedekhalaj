@@ -1,24 +1,16 @@
-const GAME_AREA_HEIGHT = 10;
-const GAME_AREA_WIDTH = 10;
+const GAME_AREA_HEIGHT = 12;
+const GAME_AREA_WIDTH = 12;
 
-
-class Level {
-    constructor (axisX, axisY, tileType) {
-        this.axisX = axisX,
-        this.axisY = axisY,
-        this.tileType = tileType
-    }
-}
 
 export function createTable() {
-    const tileCount = 100;
+    const tileCount = GAME_AREA_HEIGHT * GAME_AREA_WIDTH;
     const display = document.getElementById("display");
     for (let i = 0; i < GAME_AREA_HEIGHT; i++) {
         for (let j = 0; j < GAME_AREA_WIDTH; j++) {
-                let newTile = createElement();
-                newTile.dataset.row = i;
-                newTile.dataset.column = j;
-                display.appendChild(newTile);
+            let newTile = createElement();
+            newTile.dataset.row = i;
+            newTile.dataset.column = j;
+            display.appendChild(newTile);
         }
     }
 }
@@ -38,7 +30,7 @@ function createElement(classOfElement) {
 }
 
 function saveGameArea() {
-    let textArea = document.querySelector("textarea")
+    let textArea = document.querySelector("textarea");
     let display = document.getElementById("display");
     textArea.innerText = display.innerHTML;
 }
@@ -50,14 +42,30 @@ function createSaveButton() {
     return saveButton
 }
 
+function createCopyButton() {
+    let copyButton = createButtonFor("copy map");
+    copyButton.className = "copy"
+    copyButton.addEventListener("click", copyToClipboard);
+    return copyButton
+}
+
 function createGenerateMapButton() {
     let generateButton = createButtonFor("new map");
-    generateButton.className = "generate-map"
+    generateButton.className = "generate-map";
     generateButton.addEventListener("click", (e) => {
         deleteTable();
         createTable();
     });
     return generateButton
+}
+
+function createSetOriginButton() {
+    let setOriginButton = createButtonFor("set origin");
+    setOriginButton.className = "set-origin";
+    setOriginButton.addEventListener("click", (e) => {
+        saveOrigin();
+    });
+    return setOriginButton
 }
 
 function createButtonFor(buttonText) {
@@ -81,8 +89,12 @@ export function initEditorMenu() {
     }
     let saveMapButton = createSaveButton();
     let generateMapButton = createGenerateMapButton();
+    let copyMapHtmlButton = createCopyButton();
+    let setOriginButton = createSetOriginButton();
+    menu.appendChild(copyMapHtmlButton);
     menu.appendChild(saveMapButton);
     menu.appendChild(generateMapButton);
+    menu.appendChild(setOriginButton);
     document.body.appendChild(menu);
 }
 
@@ -111,7 +123,6 @@ function addClassToTile(targetTile) {
     } else {
         targetTile.classList.add(userChoice.value);
     }
-
 }
 
 
@@ -146,3 +157,21 @@ function addListenerForTile(tile) {
     })
 }
 
+function copyToClipboard() {
+    let generatedMapHtml = document.getElementById("map-html");
+    generatedMapHtml.select();
+    navigator.clipboard.writeText(generatedMapHtml.value);
+    alert("copied map html");
+}
+
+function saveOrigin() {
+    let player = document.querySelector(".player");
+    let coordinates = [player.dataset.row, player.dataset.column];
+    let playerOrigin = document.createElement("input");
+    let display = document.getElementById("display");
+    playerOrigin.type = "hidden";
+    playerOrigin.id = "playerOrigin"
+    playerOrigin.dataset.originX = coordinates[0];
+    playerOrigin.dataset.originY = coordinates[1];
+    display.appendChild(playerOrigin);
+}

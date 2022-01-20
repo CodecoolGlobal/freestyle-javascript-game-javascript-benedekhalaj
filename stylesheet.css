@@ -1,15 +1,26 @@
-#display{
-    width: 10em;
-    height: 10em;
-    margin: 0 auto;
-    position:relative;
-    top: 2em;
-    background:darkcyan;
-    box-shadow:.25em .25em 1em rgba(0,0,0,.2);
-    transform:rotatex(45deg) rotateZ(45deg) translateZ(-1em);
+:root {
+    --player-primary-color: orange;
+    --player-secondary-color: rgb(255, 149, 49);
+    --obstacle-primary-color: white;
+    --obstacle-secondary-color: darkcyan;
+    --floor-color: #f6f6f6;
+    --display-bg-color: darkcyan;
+    --goal-color: rgb(103, 203, 221);
+}
+
+#display {
+    width: 12em;
+    height: 12em;
+    margin:0 auto;
+    position: relative;
+    top: .25em;
+    background: var(--display-bg-color);
+    box-shadow: .25em .25em 1em rgba(0,0,0,.2);
+    transform: rotatex(45deg) rotateZ(45deg) translateZ(-1em);
+    user-select: none;
     transform-style: preserve-3d;
     font-size: 3em;
-    user-select: none;
+    
 }
 
 #editor-menu {
@@ -27,8 +38,8 @@
 }
 
 #button {
-    height: 50px;
-    width: 150px;
+    height: 30px;
+    width: 100px;
     border-radius: 30px;
     background-color: lightcoral;
     border: 5px outset salmon;
@@ -44,7 +55,10 @@
   }
 
 
-#button.save-button, #button.load, #button.generate-map {
+#button.save,
+#button.set-origin,
+#button.generate-map,
+#button.copy {
     background-color: lightgreen;
     border-color: chartreuse;
 }
@@ -56,6 +70,7 @@
 #button:active {
     scale: 0.9;
 }
+
 
 .init-game {
     height:100%;
@@ -70,16 +85,21 @@
 .obstacle:after,
 .player:before,
 .player:after{
-    width:1em;
-    height:1em;
+    width: 1em;
+    height: 1em;
 }
 
-#display div{
-    float:left;
-    background:#f6f6f6;
+#display div {
+    float: left;
+    background: var(--floor-color);
     transform-origin: 97% 97%;
-    position:relative;
-    box-shadow:.125em .125em .5em rgba(0,0,0,.09);
+    position: relative;
+    box-shadow: .125em .125em .5em rgba(0,0,0,.09);
+}
+
+
+.goal {
+    background: var(--goal-color) !important;
 }
 
 .level {
@@ -93,47 +113,45 @@
     font-size: 5em;
     text-shadow:.10em .10em .25em rgba(0,0,0,.2);
 }
-
-
-.obstacle{
-    background:white !important;
+.obstacle {
+    background: var(--obstacle-primary-color) !important;
     transform: translateZ(1em);
     transform-style: preserve-3d;
 }
-.obstacle:before, .obstacle:after{
-    content:"";
-    background:darkcyan;
+.obstacle:before, .obstacle:after {
+    content: "";
+    background: var(--obstacle-secondary-color);
     position: absolute;
     transform-origin: 100% 100%;
 }
-.obstacle:before{
-    transform:rotateX(-90deg) translateY(1em);
-    box-shadow:inset 0em -.125em .25em rgba(0,0,0,.1);
+.obstacle:before {
+    transform: rotateX(-90deg) translateY(1em);
+    box-shadow: inset 0em -.125em .25em rgba(0,0,0,.1);
 }
 
-.obstacle:after{
-    transform:rotateY(90deg) translateX(1em);
-    box-shadow:inset -.125em 0em .25em rgba(0,0,0,.1);
+.obstacle:after {
+    transform: rotateY(90deg) translateX(1em);
+    box-shadow: inset -.125em 0em .25em rgba(0,0,0,.1);
 }
-.player{
-    background:orange !important;
+.player {
+    background: var(--player-primary-color) !important;
     transform: translateZ(1em);
     transform-style: preserve-3d;
     transition-property: transform;
     transition: 0.7s;
 }
-.player:before, .player:after{
-    content:"";
-    background: rgb(255, 149, 49);
+.player:before, .player:after {
+    content: "";
+    background: var(--player-secondary-color);
     position: absolute;
     transform-origin: 100% 100%;
 }
-.player:before{
-    transform:rotateX(-90deg) translateY(1em);
-    box-shadow:inset 0em -.125em .25em rgba(0,0,0,.1);
+.player:before {
+    transform: rotateX(-90deg) translateY(1em);
+    box-shadow: inset 0em -.125em .25em rgba(0,0,0,.1);
 }
 
-.player:after{
-transform:rotateY(90deg) translateX(1em);
-box-shadow:inset -.125em 0em .25em rgba(0,0,0,.1);
+.player:after {
+    transform: rotateY(90deg) translateX(1em);
+    box-shadow: inset -.125em 0em .25em rgba(0,0,0,.1);
 }
