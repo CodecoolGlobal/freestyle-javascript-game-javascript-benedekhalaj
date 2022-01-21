@@ -96,6 +96,8 @@ html {
     background: var(--obstacle-primary-color) !important;
     transform: translateZ(1em);
     transform-style: preserve-3d;
+    transition-property: transform ease-in;
+    transition: 0.15s;
 }
 .obstacle:before, .obstacle:after {
     content: "";
