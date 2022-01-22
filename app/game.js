@@ -8,6 +8,12 @@ export function initMovement() {
     );
 }
 
+export function initGame() {
+    const html = document.querySelector('html');
+    html.classList.add('init-game');
+    switchLevel(0);
+}
+
 function startMovement(event) {
     let allowedKeys = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'];
     if (allowedKeys.includes(event.key)) {
@@ -98,53 +104,58 @@ function getOriginCoordinates() {
     }
 }
 
-function switchLevel(currentLevel) {
-    const volumeButton = document.querySelector('.volumeButton');
-    volumeButton.classList.remove('show-volumeButton');
-    if (currentLevel == 3) {
-        slideshow.createDivElement('level', 'thank-you');
-        const thankYou = document.getElementById('thank-you');
-        thankYou.innerHTML = '<h1>You have finished the game!<br><br>Thank you for playing!</h1>';
-        slideshow.scrollToPosition($(document).height() - thankYou.clientHeight, 2000);
-        volumeButton.style.color = 'darkcyan';
-    } else if (currentLevel == 2) {
-        let newLevel = +currentLevel + 1
-        slideshow.createDivElement('level', `level-${newLevel}`);
-        const gameArea = document.getElementById(`level-${newLevel}`);
-        gameArea.innerHTML = `<h1>Level ${newLevel}</h1><p>by Doni</p><div id="display"></div>`;
-        gameArea.children[2].innerHTML = levels.getLevelThree();
-        slideshow.scrollToPosition($(document).height() - gameArea.clientHeight, 2000);
-        volumeButton.style.color = 'white';
-    } else if (currentLevel == 1) {
-        let newLevel = +currentLevel + 1
-        slideshow.createDivElement('level', `level-${newLevel}`);
-        const gameArea = document.getElementById(`level-${newLevel}`);
-        gameArea.innerHTML = `<h1>Level ${newLevel}</h1><p>by LatNat</p><div id="display"></div>`;
-        gameArea.children[2].innerHTML = levels.getLevelTwo();
-        slideshow.scrollToPosition($(document).height() - gameArea.clientHeight, 2000);
-        volumeButton.style.color = 'white';
-    } else {
-        let newLevel = +currentLevel + 1
-        slideshow.createDivElement('level', `level-${newLevel}`);
-        const gameArea = document.getElementById(`level-${newLevel}`);
-        gameArea.innerHTML = `<h1>Level ${newLevel}</h1><div id="display"></div>`;
-        gameArea.children[1].innerHTML = levels.getLevelOne();
-        slideshow.scrollToPosition($(document).height() - gameArea.clientHeight, 2000);
+
+function setLevel(level) {
+    const gameLevels = {
+        1: levels.getLevelOne(),
+        2: levels.getLevelTwo(),
+        3: levels.getLevelThree()
     }
-    
-    
-    setTimeout(function () {
-        slideshow.removeDivElement(`level-${currentLevel}`);
-        initMovement();
-        volumeButton.classList.add('show-volumeButton');
-    }, 2000)
+    return gameLevels[level];
+}
+
+function setLevelHeader(level) {
+    const levelHeaders = {
+        1: 'by Benedek',
+        2: 'by Latnat',
+        3: 'by Doni'
+    }
+    return levelHeaders[level];
 }
 
 
-export function initLevelOne() {
-    const html = document.querySelector('html');
-    html.classList.add('init-game');
-    const gameArea = document.getElementById('level-1');
-    gameArea.innerHTML = '<h1>Level 1</h1><p>by Benedek</p><div id="display"></div>';
-    gameArea.children[2].innerHTML = levels.getLevelOne();
+function setVolumeButtonColor(level) {
+    const colors = {
+        1: 'darkcyan',
+        2: 'white',
+        3: 'white',
+        4: 'darkcyan'
+    }
+    return colors[level];
+}
+
+
+function switchLevel(currentLevel) {
+    const volumeButton = document.querySelector('.volumeButton');
+    volumeButton.classList.remove('show-volumeButton');
+    let nextLevel = +currentLevel + 1
+    slideshow.createDivElement('level', `level-${nextLevel}`);
+    const gameArea = document.getElementById(`level-${nextLevel}`);
+
+    if (nextLevel < 4) {
+        gameArea.innerHTML = `<h1>Level ${nextLevel}</h1><p>${setLevelHeader(nextLevel)}</p><div id="display"></div>`;
+        gameArea.children[2].innerHTML = setLevel(nextLevel);
+    } else {
+        gameArea.innerHTML = '<h1>You have finished the game!<br><br>Thank you for playing!</h1>';
+    }
+
+    slideshow.scrollToPosition($(document).height() - gameArea.clientHeight, 2000);
+    volumeButton.style.color = setVolumeButtonColor(nextLevel);
+
+    
+    setTimeout(function () {
+        initMovement();
+        volumeButton.classList.add('show-volumeButton');
+        slideshow.removeDivElement(`level-${currentLevel}`);
+    }, 2000)
 }
