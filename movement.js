@@ -1,15 +1,36 @@
 import { getLevelOne, getLevelTwo, getLevelThree } from "./levels.js";
 import { initMovement } from "./game.js";
+import { getOrientation } from "./map_editor.js";
 
 
 function setDirection(direction) {
-    const arrowDirection = {
-        "ArrowLeft": [0, -1],
-        "ArrowRight": [0, 1],
-        "ArrowUp": [-1, 0],
-        "ArrowDown": [1, 0]
-    }
+    const orientation = getOrientation();
+    const arrowDirection = convertDirection(orientation);
     return arrowDirection[direction]
+}
+
+function convertDirection(orientation) {
+    const realignedDirection = {
+        "north": {
+            "ArrowLeft": [0, -1],
+            "ArrowRight": [0, 1],
+            "ArrowUp": [-1, 0],
+            "ArrowDown": [1, 0]
+        },
+        "east": {
+            "ArrowLeft": [1, 0],
+            "ArrowRight": [-1, 0],
+            "ArrowUp": [0, -1],
+            "ArrowDown": [0, 1]
+        },
+        "west": {
+            "ArrowLeft": [-1, 0],
+            "ArrowRight": [1, 0],
+            "ArrowUp": [0, 1],
+            "ArrowDown": [0, -1]
+        }
+    }
+    return realignedDirection[orientation]
 }
 
 function checkWin(player) {

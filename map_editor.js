@@ -190,25 +190,31 @@ function saveOrigin() {
 }
 
 export function addRotateEventListener() {
-    document.addEventListener("keydown", (e) => {
-        let direction = e.key;
-        rotateMap(direction);
-    })
+    document.addEventListener("keydown", rotateMap);
 }
 
-function getOrientation() {
+export function getOrientation() {
     let display = document.getElementById("display");
     let orientation = display.className;
     return orientation
 }
 
-function rotateMap(directionKey) {
+function rotateMap(event) {
+    let directionKey = event.key;
     let map = document.getElementById("display");
     let currentOrientation = getOrientation();
     if (directionKey === "d" && currentOrientation !== "east") {
+        document.removeEventListener('keydown', rotateMap);
         map.className = RotationRight[currentOrientation];
+        setTimeout(() => {
+            addRotateEventListener()
+        }, 700);
     } else if (directionKey === "a" && currentOrientation !== "west") {
+        document.removeEventListener('keydown', rotateMap);
         map.className = RotationLeft[currentOrientation];
+        setTimeout(() => {
+            addRotateEventListener()
+        }, 700);
     } else {}
 }
 
