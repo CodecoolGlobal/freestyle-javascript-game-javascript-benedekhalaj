@@ -28,10 +28,6 @@
     --orientation: 315deg;
 }
 
-.west-from-north {
-    --orientation: -45deg;
-}
-
 #display {
     font-size:3em;
     width: 12em;
