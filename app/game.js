@@ -1,4 +1,9 @@
-function initMovement() {
+import * as levels from "./levels.js";
+import * as sound from "./sound.js";
+import * as slideshow from "./slideshow.js";
+
+
+export function initMovement() {
     document.addEventListener('keydown', startMovement
     );
 }
@@ -7,7 +12,7 @@ function startMovement(event) {
     let allowedKeys = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'];
     if (allowedKeys.includes(event.key)) {
         document.removeEventListener('keydown', startMovement);
-        movement.go(event.key, 1);
+        go(event.key, 1);
     }
 }
 
@@ -50,7 +55,7 @@ function go(direction, pitch) {
         
     } else if (!neighbour.classList.contains("obstacle")) {
         player.classList.remove("player");
-        let stepSound = getStepSound(pitch);
+        let stepSound = sound.getStepSound(pitch);
         stepSound.play();
         neighbour.classList.add("player");
         setTimeout(function () {
@@ -99,40 +104,49 @@ function switchLevel(currentLevel) {
     const volumeButton = document.querySelector('.volumeButton');
     volumeButton.classList.remove('show-volumeButton');
     if (currentLevel == 3) {
-        createDivElement('level', 'thank-you');
+        slideshow.createDivElement('level', 'thank-you');
         const thankYou = document.getElementById('thank-you');
         thankYou.innerHTML = '<h1>You have finished the game!<br><br>Thank you for playing!</h1>';
-        scrollToPosition($(document).height() - thankYou.clientHeight, 2000);
+        slideshow.scrollToPosition($(document).height() - thankYou.clientHeight, 2000);
         volumeButton.style.color = 'darkcyan';
     } else if (currentLevel == 2) {
         let newLevel = +currentLevel + 1
-        createDivElement('level', `level-${newLevel}`);
+        slideshow.createDivElement('level', `level-${newLevel}`);
         const gameArea = document.getElementById(`level-${newLevel}`);
         gameArea.innerHTML = `<h1>Level ${newLevel}</h1><p>by Doni</p><div id="display"></div>`;
-        gameArea.children[2].innerHTML = getLevelThree();
-        scrollToPosition($(document).height() - gameArea.clientHeight, 2000);
+        gameArea.children[2].innerHTML = levels.getLevelThree();
+        slideshow.scrollToPosition($(document).height() - gameArea.clientHeight, 2000);
         volumeButton.style.color = 'white';
     } else if (currentLevel == 1) {
         let newLevel = +currentLevel + 1
-        createDivElement('level', `level-${newLevel}`);
+        slideshow.createDivElement('level', `level-${newLevel}`);
         const gameArea = document.getElementById(`level-${newLevel}`);
         gameArea.innerHTML = `<h1>Level ${newLevel}</h1><p>by LatNat</p><div id="display"></div>`;
-        gameArea.children[2].innerHTML = getLevelTwo();
-        scrollToPosition($(document).height() - gameArea.clientHeight, 2000);
+        gameArea.children[2].innerHTML = levels.getLevelTwo();
+        slideshow.scrollToPosition($(document).height() - gameArea.clientHeight, 2000);
         volumeButton.style.color = 'white';
     } else {
         let newLevel = +currentLevel + 1
-        createDivElement('level', `level-${newLevel}`);
+        slideshow.createDivElement('level', `level-${newLevel}`);
         const gameArea = document.getElementById(`level-${newLevel}`);
         gameArea.innerHTML = `<h1>Level ${newLevel}</h1><div id="display"></div>`;
-        gameArea.children[1].innerHTML = getLevelOne();
-        scrollToPosition($(document).height() - gameArea.clientHeight, 2000);
+        gameArea.children[1].innerHTML = levels.getLevelOne();
+        slideshow.scrollToPosition($(document).height() - gameArea.clientHeight, 2000);
     }
     
     
     setTimeout(function () {
-        removeDivElement(`level-${currentLevel}`);
+        slideshow.removeDivElement(`level-${currentLevel}`);
         initMovement();
         volumeButton.classList.add('show-volumeButton');
     }, 2000)
+}
+
+
+export function initLevelOne() {
+    const html = document.querySelector('html');
+    html.classList.add('init-game');
+    const gameArea = document.getElementById('level-1');
+    gameArea.innerHTML = '<h1>Level 1</h1><p>by Benedek</p><div id="display"></div>';
+    gameArea.children[2].innerHTML = levels.getLevelOne();
 }

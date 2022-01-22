@@ -1,23 +1,24 @@
-function removeSlides(slideCount) {
+export function removeSlides(slideCount) {
+    const slides = document.querySelectorAll(".slide");
     for (let i = 0; i < slideCount; i++) {
         slides[i].remove();
     }
 }
 
-function createDivElement(className, id) {
+export function createDivElement(className, id) {
     let div = document.createElement('div');
     div.id = id;
     div.className = className;
     document.body.appendChild(div);
 }
 
-function removeDivElement(id) {
+export function removeDivElement(id) {
     const div = document.getElementById(id);
     div.remove();
 }
 
 
-function scrollToPosition(position, duration) {
+export function scrollToPosition(position, duration) {
     document.querySelector('html').style.scrollSnapType = 'none';
 
     $('html, body').animate({

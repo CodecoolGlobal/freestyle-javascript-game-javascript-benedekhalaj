@@ -1,4 +1,17 @@
-function getStepSound(pitch) {
+export function playSoundForMenu(){
+    setTimeout(function() {
+        sound.play()
+    }, 1200)
+}
+
+
+const volumeIcon = document.getElementsByClassName('fa-volume-up')[0];
+const mutedVolumeIcon = document.getElementsByClassName("fa-volume-mute")[0];
+const sound = new Audio("audio/menu audio/sample5.ogg");
+
+
+
+export function getStepSound(pitch) {
     console.log(pitch);
     const stepSoundBank = {
         "1": new Audio("audio/soundFX/pitch_1.ogg"),
@@ -17,13 +30,6 @@ function getStepSound(pitch) {
     return stepSoundBank[String(pitch)]
 }
 
-
-
-function playSoundForMenu(){
-    setTimeout(function() {
-        sound.play()
-    }, 1200)
-}
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
