@@ -6,6 +6,11 @@
     --floor-color: #f6f6f6;
     --display-bg-color: darkcyan;
     --goal-color: rgb(103, 203, 221);
+    --facing-north: 45deg;
+    --facing-east: 135deg;
+    --facing-south: 225deg;
+    --facing-west: 315deg;
+    
 }
 
 #display {
@@ -17,7 +22,7 @@
     top: .25em;
     background: var(--display-bg-color);
     box-shadow: .25em .25em 1em rgba(0,0,0,.2);
-    transform: rotatex(45deg) rotateZ(45deg) translateZ(-1em);
+    transform: rotatex(45deg) rotateZ(var(--facing-north)) translateZ(-1em);
     transform-style: preserve-3d;
     user-select: none;
 }
@@ -96,6 +101,8 @@ html {
     background: var(--obstacle-primary-color) !important;
     transform: translateZ(1em);
     transform-style: preserve-3d;
+    transition-property: transform ease-in;
+    transition: 0.15s;
 }
 .obstacle:before, .obstacle:after {
     content: "";
