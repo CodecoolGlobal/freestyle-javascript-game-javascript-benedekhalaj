@@ -1,6 +1,6 @@
 import { getLevelOne, getLevelTwo, getLevelThree } from "./levels.js";
 import { initMovement } from "./game.js";
-import { getOrientation } from "./map_editor.js";
+import { addRotateEventListener, getOrientation } from "./map_editor.js";
 
 
 function setDirection(direction) {
@@ -61,6 +61,7 @@ export function go(direction, pitch) {
         setTimeout(function () {
             startingPoint.classList.add("player");
             initMovement();
+            addRotateEventListener();
         }, 400);
         
     } else if (!neighbour.classList.contains("obstacle")) {
@@ -73,6 +74,7 @@ export function go(direction, pitch) {
         }, 35);
     } else {
         initMovement();
+        addRotateEventListener();
     }
 }
 

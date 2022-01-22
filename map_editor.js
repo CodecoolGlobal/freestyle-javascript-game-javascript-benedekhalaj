@@ -199,7 +199,7 @@ export function getOrientation() {
     return orientation
 }
 
-function rotateMap(event) {
+export function rotateMap(event) {
     let directionKey = event.key;
     let map = document.getElementById("display");
     let currentOrientation = getOrientation();
@@ -207,13 +207,13 @@ function rotateMap(event) {
         document.removeEventListener('keydown', rotateMap);
         map.className = RotationRight[currentOrientation];
         setTimeout(() => {
-            addRotateEventListener()
+            addRotateEventListener();
         }, 700);
     } else if (directionKey === "a" && currentOrientation !== "west") {
         document.removeEventListener('keydown', rotateMap);
         map.className = RotationLeft[currentOrientation];
         setTimeout(() => {
-            addRotateEventListener()
+            addRotateEventListener();
         }, 700);
     } else {}
 }
