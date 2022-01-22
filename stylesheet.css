@@ -22,7 +22,7 @@
     top: .25em;
     background: var(--display-bg-color);
     box-shadow: .25em .25em 1em rgba(0,0,0,.2);
-    transform: rotatex(45deg) rotateZ(var(--facing-north)) translateZ(-1em);
+    transform: rotatex(45deg) rotateZ(var(--facing-east)) translateZ(-1em);
     transform-style: preserve-3d;
     user-select: none;
 }
@@ -97,6 +97,14 @@ html {
     background: var(--goal-color) !important;
 }
 
+.north.obstacle:before {
+    transform: rotateX(-90deg) translateY(1em);
+}
+
+.east.obstacle:before {
+    transform: rotatex(-90deg) translatez(-1em) translatey(1em);
+}
+
 .obstacle {
     background: var(--obstacle-primary-color) !important;
     transform: translateZ(1em);
@@ -111,7 +119,6 @@ html {
     transform-origin: 100% 100%;
 }
 .obstacle:before {
-    transform: rotateX(-90deg) translateY(1em);
     box-shadow: inset 0em -.125em .25em rgba(0,0,0,.1);
 }
 
