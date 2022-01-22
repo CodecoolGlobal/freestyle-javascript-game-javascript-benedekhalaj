@@ -3,15 +3,14 @@ const GAME_AREA_WIDTH = 12;
 
 const RotationRight = {
     "north": "east",
-    "east": "south",
-    "south": "west",
+    "east": null,
     "west": "north"
+
 }
 
 const RotationLeft = {
     "north": "west",
-    "west": "south",
-    "south": "east",
+    "west": null,
     "east": "north"
 }
 
@@ -206,11 +205,10 @@ function getOrientation() {
 function rotateMap(directionKey) {
     let map = document.getElementById("display");
     let currentOrientation = getOrientation();
-    if (directionKey === "d") {
+    if (directionKey === "d" && currentOrientation !== "east") {
         map.className = RotationRight[currentOrientation];
-    } else if (directionKey === "a") {
+    } else if (directionKey === "a" && currentOrientation !== "west") {
         map.className = RotationLeft[currentOrientation];
     } else {}
-    
 }
 

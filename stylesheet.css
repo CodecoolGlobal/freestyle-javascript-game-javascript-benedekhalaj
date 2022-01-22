@@ -20,12 +20,9 @@
     --orientation: 135deg;
 }
 
-.south {
-    --orientation: 225deg;
-}
 
 .west {
-    --orientation: 315deg;
+    --orientation: -45deg;
 }
 
 #display {
@@ -119,41 +116,38 @@ html {
 .north .obstacle:before,
 .north .player:before {
     transform: rotateX(-90deg) translateY(1em);
+    transition: all 0.75;
 }
 
 .north .obstacle:after,
 .north .player:after {
     transform: rotateX(90deg) rotateY(90deg);
+    transition: all 0.75;
 }
 
 .east .obstacle:before,
 .east .player:before {
     transform: rotatex(-90deg) translatez(-1em) translatey(1em);
+    transition: all 0.75;
 }
 
 .east .obstacle:after,
 .east .player:after {
     transform: rotateX(90deg) rotateY(90deg);
+    transition: all 0.75;
 }
 
-.south .obstacle:after,
-.south .player:after {
-    transform: rotateX(-90deg) translateY(1em) translateZ(-1em);
-}
-
-.south .obstacle:before,
-.south .player:before {
-    transform: rotateX(90deg) rotateY(90deg) translateZ(-1em);
-}
 
 .west .obstacle:after,
 .west .player:after {
     transform: rotateX(-90deg) translateY(1em);
+    transition: all 0.75;
 }
 
 .west .obstacle:before,
 .west .player:before {
     transform: rotateX(90deg) rotateY(90deg) translateZ(-1em);
+    transition: all 0.75;
 }
 
 .obstacle {
