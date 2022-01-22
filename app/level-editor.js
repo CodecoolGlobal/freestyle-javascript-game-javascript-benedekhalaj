@@ -1,9 +1,11 @@
+import * as game from "./game.js";
+
+
 const GAME_AREA_HEIGHT = 12;
 const GAME_AREA_WIDTH = 12;
 
 
-export function createTable() {
-    const tileCount = GAME_AREA_HEIGHT * GAME_AREA_WIDTH;
+function createTable() {
     const display = document.getElementById("display");
     for (let i = 0; i < GAME_AREA_HEIGHT; i++) {
         for (let j = 0; j < GAME_AREA_WIDTH; j++) {
@@ -31,7 +33,6 @@ function createElement(classOfElement) {
 
 function saveGameArea() {
     let textArea = document.querySelector("textarea");
-    console.log(textArea)
     let display = document.getElementById("display");
     textArea.innerText = display.innerHTML;
 }
@@ -76,7 +77,7 @@ function createButtonFor(buttonText) {
     return button
 }
 
-export function initEditorMenu() {
+function initEditorMenu() {
     const options = ["goal", "player", "obstacle"];
     let menu = document.createElement("div");
     menu.id = "editor-menu";
@@ -176,3 +177,8 @@ function saveOrigin() {
     playerOrigin.dataset.originY = coordinates[1];
     display.appendChild(playerOrigin);
 }
+
+
+createTable();
+initEditorMenu();
+game.initMovement();
