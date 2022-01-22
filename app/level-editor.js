@@ -6,7 +6,6 @@ const GAME_AREA_WIDTH = 12;
 
 
 function createTable() {
-    const tileCount = GAME_AREA_HEIGHT * GAME_AREA_WIDTH;
     const display = document.getElementById("display");
     for (let i = 0; i < GAME_AREA_HEIGHT; i++) {
         for (let j = 0; j < GAME_AREA_WIDTH; j++) {
@@ -34,7 +33,6 @@ function createElement(classOfElement) {
 
 function saveGameArea() {
     let textArea = document.querySelector("textarea");
-    console.log(textArea)
     let display = document.getElementById("display");
     textArea.innerText = display.innerHTML;
 }
@@ -179,99 +177,6 @@ function saveOrigin() {
     playerOrigin.dataset.originY = coordinates[1];
     display.appendChild(playerOrigin);
 }
-
-
-class Level {
-    constructor (axisX, axisY, tileType) {
-        this.axisX = axisX,
-        this.axisY = axisY,
-        this.tileType = tileType
-    }
-}
-
-// function saveGameArea() {
-//     let axisX = [];
-//     let axisY = [];
-//     let tileType = [];
-//     let allTiles = document.querySelectorAll(".tile");
-//     console.log(allTiles);
-//     for (let tile of allTiles) {
-//         axisX.push(tile.dataset.row);
-//         axisY.push(tile.dataset.column);
-//         tileType.push(tile.className);
-//     }
-//     const level = new Level(axisX, axisY, tileType);
-//     console.log(level);
-// }
-
-// function createSaveButton() {
-//     let saveButton = document.createElement("button")
-//     saveButton.addEventListener("click", saveGameArea);
-//     saveButton.innerText = "save";
-//     document.body.appendChild(saveButton);
-// }
-
-// export function initEditorMenu() {
-//     const options = ["goal", "player", "obstacle"];
-//     let menu = document.createElement("div");
-//     menu.id = "editor-menu";
-//     for (let option of options) {
-//         let button = document.createElement("div");
-//         button.id = "button";
-//         button.className = option;
-//         button.addEventListener("click", (event) => {
-//             let choice = event.target;
-//             activateTile(choice.className);
-//         })
-//         menu.appendChild(button);
-//     }
-//     document.body.appendChild(menu);
-// }
-
-function activateTile(chosenType) {
-    let chosenTile = document.querySelector("input[type=hidden]");
-    if (!chosenTile) {
-        let userChoice = document.createElement("input");
-        userChoice.type = "hidden";
-        userChoice.value = chosenType;
-        document.body.appendChild(userChoice);
-    } else {
-        chosenTile.remove();
-        activateTile(chosenType);
-    }
-}
-
-// function addClassToTile(targetTile) {
-//     let userChoice = document.querySelector("input[type=hidden]");
-//     targetTile.classList.add(userChoice.value);
-// }
-
-// function removeClassFromTile(targetTile) {
-//     let userChoice = document.querySelector("input[type=hidden]");
-//     targetTile.classList.remove(userChoice.value);
-// }
-
-// export function addListenerForTile(tile) {
-//     tile.addEventListener("click", (event) => {
-//         let chosenTile = event.target;
-//         addClassToTile(chosenTile);
-//     })
-
-//     tile.addEventListener("contextmenu", (event) => {
-//         let chosenTile = event.target;
-//         event.preventDefault();
-//         removeClassFromTile(chosenTile);
-//     })
-
-//     tile.addEventListener("mouseover", (event) => {
-//         let chosenTile = event.target;
-//         if (event.ctrlKey) {
-//             addClassToTile(chosenTile);
-//         } else if (event.shiftKey) {
-//             removeClassFromTile(chosenTile);
-//         }
-//     })
-// }
 
 
 createTable();

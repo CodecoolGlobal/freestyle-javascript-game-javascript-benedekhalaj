@@ -5,9 +5,7 @@ import * as sound from "./sound.js";
 
 
 const menuButton = document.querySelector('.menuButton');
-
 const body = document.body;
-const menuBox = document.querySelector('.menuBox');
 const disk = document.querySelector('.fa-compact-disc');
 
 

@@ -12,7 +12,6 @@ const sound = new Audio("audio/menu audio/sample5.ogg");
 
 
 export function getStepSound(pitch) {
-    console.log(pitch);
     const stepSoundBank = {
         "1": new Audio("audio/soundFX/pitch_1.ogg"),
         "2": new Audio("audio/soundFX/pitch_2.ogg"),
@@ -26,7 +25,6 @@ export function getStepSound(pitch) {
         "10": new Audio("audio/soundFX/pitch_10.ogg"),
         "11": new Audio("audio/soundFX/pitch_11.ogg"),
     }
-    console.log(stepSoundBank[String(pitch)])
     return stepSoundBank[String(pitch)]
 }
 

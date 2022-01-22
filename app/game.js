@@ -28,7 +28,6 @@ function setDirection(direction) {
 
 
 function go(direction, pitch) {
-    console.log(pitch);
     let [axisX, axisY] = getOriginCoordinates();
     let [directionRow, directionCol] = setDirection(direction);
     let player = document.querySelector(".player");
@@ -88,7 +87,6 @@ function resetPosition(){
 
 function getOriginCoordinates() {
     let coordinates = document.getElementById("playerOrigin");
-    console.log(coordinates);
     if (coordinates) {
         let axisX = +coordinates.dataset.originX;
         let axisY = +coordinates.dataset.originY;
