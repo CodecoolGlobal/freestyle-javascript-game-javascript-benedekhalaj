@@ -37,7 +37,7 @@
     transform: rotatex(45deg) rotateZ(var(--orientation)) translateZ(-1em);
     transform-style: preserve-3d;
     user-select: none;
-    transition-property: transform ease-out;
+    transition-property: transf2rm ease-in;
     transition: 0.75s;
 }
 
@@ -116,38 +116,38 @@ html {
 .north .obstacle:before,
 .north .player:before {
     transform: rotateX(-90deg) translateY(1em);
-    transition: all 0.75;
+    transition: all 0.20s ease-in;
 }
 
 .north .obstacle:after,
 .north .player:after {
     transform: rotateX(90deg) rotateY(90deg);
-    transition: all 0.75;
+    transition: all 0.20s ease-in;
 }
 
 .east .obstacle:before,
 .east .player:before {
-    transform: rotatex(-90deg) translatez(-1em) translatey(1em);
-    transition: all 0.75;
+    transform: rotatex(-90deg) translateZ(-1em) translateY(1em);
+    transition: all 0.20s ease-in;
 }
 
 .east .obstacle:after,
 .east .player:after {
     transform: rotateX(90deg) rotateY(90deg);
-    transition: all 0.75;
+    transition: all 0.20s ease-in;
 }
 
 
 .west .obstacle:after,
 .west .player:after {
-    transform: rotateX(-90deg) translateY(1em);
-    transition: all 0.75;
+    transform: rotateX(90deg) translateX(-1em) rotateY(90deg);
+    transition: all 0.20s ease-in;
 }
 
 .west .obstacle:before,
 .west .player:before {
-    transform: rotateX(90deg) rotateY(90deg) translateZ(-1em);
-    transition: all 0.75;
+    transform: rotateX(-90deg) translateY(1em);
+    transition: all 0.20s ease-in;
 }
 
 .obstacle {
