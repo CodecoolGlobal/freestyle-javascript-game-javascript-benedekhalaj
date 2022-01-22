@@ -1,0 +1,43 @@
+#editor-menu {
+    position: absolute;
+    top: 1em;
+    width: 250px;
+    height:  500px;
+    border-radius: 15px;
+    border: 10px outset darkcyan;
+    background-color: darkcyan;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 10px;
+    padding: 20px 0 0 0;
+}
+
+#button {
+    height: 30px;
+    width: 100px;
+    border-radius: 30px;
+    background-color: orange;
+    border: 5px outset orange;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: scale 0.3s;
+}
+
+#button.save,
+#button.set-origin,
+#button.generate-map,
+#button.copy {
+    background-color: floralwhite;
+    border-color: floralwhite;
+}
+
+#button:hover {
+    scale: 1.2;
+}
+
+#button:active {
+    scale: 0.9;
+}

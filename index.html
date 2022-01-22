@@ -1,23 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta http-equiv="content-type" content="text/html; charset = UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="module" src="./app/level-editor.js" defer></script>
-    <title>game</title>
-    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <meta charset = UTF-8>
+    <script
+			  src="https://code.jquery.com/jquery-3.6.0.min.js"
+			  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+			  crossorigin="anonymous"></script>
+    <script type="module" src="./app/app.js" defer></script>
+    <title>presentation</title>
+    <link rel="stylesheet" type="text/css" href="style/style.css">
+    <link rel="stylesheet" type="text/css" href="style/slideshow.css">
+    <link rel="stylesheet" type="text/css" href="style/menu.css">
+    <link rel="stylesheet" type="text/css" href="style/game.css">
+
+    
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
 </head>
 <body>
-    <div id="background"></div>
-    <div id="display">
+    <div class="volumeButton">
+        <i class="fas fa-volume-mute"></i>
+        <i class="fas fa-volume-up"></i>
     </div>
-    <div><textarea name="game-area-html" id="map-html" cols="35" rows="10"></textarea></div>
-    <div>
-        <p>Add element: left mb</p>
-        <p>Remove element: right mb</p>
-        <p>Add continuously: hold ctrl</p>
-        <p>Add continuosly: hold shift</p>
+   
+
+    <div class="slide" id="slide-intro">
+        <h1>compact disk</h1>
+        <p>a freestyle javascript game</p>
+    </div>
+
+    <div class="slide" id="slide-features">
+        <h1>features</h1>
+        <ul>
+            <li>snap-style presentation</li>
+            <li>isometric visuals</li>
+            <li>original score & sfx</li>
+            <li>animation</li>
+        </ul>
+    </div>
+
+    <div class="slide" id="slide-2">
+        
+        <video autoplay muted loop id="map-editor-video">
+            <source src="video/level_editor.webm" type="video/webm">
+        </video>
+
+        <div>
+            <h1>level editor</h1>
+        </div>
+        
+          
+    </div>
+
+    <div class="slide" id="slide-git">
+        <h1>git workflow</h1>
+        <video autoplay muted loop id="git-video">
+            <source src="video/branches.webm" type="video/webm">
+        </video>
+        
+        
+    </div>
+
+    <div class="slide" id="slide-code-snippet">
+        <h1>code snippet</h1>
+        <video autoplay muted loop id="code-snippet-video">
+            <source src="video/code_snippet.webm" type="video/webm">
+        </video>
+
+        
+    </div>
+
+    <div class="menuBox" id="menuBox">
+        <h1 class="menuTitle">compact<br> disk</h1>
+        <div class=discContainer>
+            <i class="fas fa-compact-disc"></i>
+        </div>
+        <button class="menuButton" id="menuButton">start game</button>
+        <i class="fas fa-compact-disc" id="miniDisc"></i>
     </div>
 </body>
 </html>
