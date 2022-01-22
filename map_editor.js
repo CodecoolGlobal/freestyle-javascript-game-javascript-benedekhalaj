@@ -1,6 +1,19 @@
 const GAME_AREA_HEIGHT = 12;
 const GAME_AREA_WIDTH = 12;
 
+const RotationRight = {
+    "north": "east",
+    "east": "south",
+    "south": "west",
+    "west": "north"
+}
+
+const RotationLeft = {
+    "north": "west",
+    "west": "south",
+    "south": "east",
+    "east": "north"
+}
 
 export function createTable() {
     const tileCount = GAME_AREA_HEIGHT * GAME_AREA_WIDTH;
@@ -176,3 +189,28 @@ function saveOrigin() {
     playerOrigin.dataset.originY = coordinates[1];
     display.appendChild(playerOrigin);
 }
+
+export function addRotateEventListener() {
+    document.addEventListener("keydown", (e) => {
+        let direction = e.key;
+        rotateMap(direction);
+    })
+}
+
+function getOrientation() {
+    let display = document.getElementById("display");
+    let orientation = display.className;
+    return orientation
+}
+
+function rotateMap(directionKey) {
+    let map = document.getElementById("display");
+    let currentOrientation = getOrientation();
+    if (directionKey === "d") {
+        map.className = RotationRight[currentOrientation];
+    } else if (directionKey === "a") {
+        map.className = RotationLeft[currentOrientation];
+    } else {}
+    
+}
+

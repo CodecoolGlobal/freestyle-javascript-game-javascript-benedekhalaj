@@ -10,7 +10,26 @@
     --facing-east: 135deg;
     --facing-south: 225deg;
     --facing-west: 315deg;
-    
+}
+
+.north {
+    --orientation: 45deg;
+}
+
+.east {
+    --orientation: 135deg;
+}
+
+.south {
+    --orientation: 225deg;
+}
+
+.west {
+    --orientation: 315deg;
+}
+
+.west-from-north {
+    --orientation: -45deg;
 }
 
 #display {
@@ -22,9 +41,11 @@
     top: .25em;
     background: var(--display-bg-color);
     box-shadow: .25em .25em 1em rgba(0,0,0,.2);
-    transform: rotatex(45deg) rotateZ(var(--facing-east)) translateZ(-1em);
+    transform: rotatex(45deg) rotateZ(var(--orientation)) translateZ(-1em);
     transform-style: preserve-3d;
     user-select: none;
+    transition-property: transform ease;
+    transition: 2s;
 }
 
 #editor-menu {
@@ -93,16 +114,42 @@ html {
     box-shadow: .125em .125em .5em rgba(0,0,0,.09);
 }
 
+
+
 .goal {
     background: var(--goal-color) !important;
 }
 
-.north.obstacle:before {
+.north .obstacle:before {
     transform: rotateX(-90deg) translateY(1em);
 }
 
-.east.obstacle:before {
+.north .obstacle:after {
+    transform: rotateX(90deg) rotateY(90deg)
+}
+
+.east .obstacle:before {
     transform: rotatex(-90deg) translatez(-1em) translatey(1em);
+}
+
+.east .obstacle:after {
+    transform: rotateX(90deg) rotateY(90deg)
+}
+
+.south .obstacle:after {
+    transform: rotateX(-90deg) translateY(1em) translateZ(-1em);
+}
+
+.south .obstacle:before {
+    transform: rotateX(90deg) rotateY(90deg) translateZ(-1em);
+}
+
+.west .obstacle:after {
+    transform: rotateX(-90deg) translateY(1em);
+}
+
+.west .obstacle:before {
+    transform: rotateX(90deg) rotateY(90deg) translateZ(-1em);
 }
 
 .obstacle {
@@ -123,7 +170,6 @@ html {
 }
 
 .obstacle:after {
-    transform: rotateY(90deg) translateX(1em);
     box-shadow: inset -.125em 0em .25em rgba(0,0,0,.1);
 }
 .player {
