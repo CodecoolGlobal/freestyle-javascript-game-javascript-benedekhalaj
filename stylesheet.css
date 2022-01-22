@@ -45,7 +45,7 @@
     transform-style: preserve-3d;
     user-select: none;
     transition-property: transform ease;
-    transition: 2s;
+    transition: 1.5s;
 }
 
 #editor-menu {
@@ -120,35 +120,43 @@ html {
     background: var(--goal-color) !important;
 }
 
-.north .obstacle:before {
+.north .obstacle:before,
+.north .player:before {
     transform: rotateX(-90deg) translateY(1em);
 }
 
-.north .obstacle:after {
+.north .obstacle:after,
+.north .player:after {
     transform: rotateX(90deg) rotateY(90deg)
 }
 
-.east .obstacle:before {
+.east .obstacle:before,
+.east .player:before {
     transform: rotatex(-90deg) translatez(-1em) translatey(1em);
 }
 
-.east .obstacle:after {
+.east .obstacle:after,
+.east .player:after {
     transform: rotateX(90deg) rotateY(90deg)
 }
 
-.south .obstacle:after {
+.south .obstacle:after,
+.south .player:after {
     transform: rotateX(-90deg) translateY(1em) translateZ(-1em);
 }
 
-.south .obstacle:before {
+.south .obstacle:before,
+.south .player:before {
     transform: rotateX(90deg) rotateY(90deg) translateZ(-1em);
 }
 
-.west .obstacle:after {
+.west .obstacle:after,
+.west .player:after {
     transform: rotateX(-90deg) translateY(1em);
 }
 
-.west .obstacle:before {
+.west .obstacle:before,
+.west .player:before {
     transform: rotateX(90deg) rotateY(90deg) translateZ(-1em);
 }
 
