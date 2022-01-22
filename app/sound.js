@@ -31,6 +31,12 @@ export function getStepSound(pitch) {
 }
 
 
+export function initVolumeButton () {
+    volumeIcon.addEventListener("click", muteSound);
+    mutedVolumeIcon.addEventListener("click", playSound);
+}
+
+
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
@@ -68,7 +74,3 @@ async function muteSound(){
     await sleep(1000);
     sound.pause();
 }
-
-
-volumeIcon.addEventListener("click", muteSound);
-mutedVolumeIcon.addEventListener("click", playSound);

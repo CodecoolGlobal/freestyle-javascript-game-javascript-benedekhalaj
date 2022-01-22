@@ -1,6 +1,7 @@
 import * as game from "./game.js";
 import * as slideshow from "./slideshow.js";
 import * as menu from "./menu.js";
+import * as sound from "./sound.js";
 
 
 const menuButton = document.querySelector('.menuButton');
@@ -10,6 +11,7 @@ const menuBox = document.querySelector('.menuBox');
 const disk = document.querySelector('.fa-compact-disc');
 
 
+sound.initVolumeButton();
 
 menuButton.addEventListener('click', playGame);
 

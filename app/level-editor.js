@@ -1,3 +1,6 @@
+import * as game from "./game.js";
+
+
 const GAME_AREA_HEIGHT = 12;
 const GAME_AREA_WIDTH = 12;
 
@@ -186,44 +189,44 @@ class Level {
     }
 }
 
-function saveGameArea() {
-    let axisX = [];
-    let axisY = [];
-    let tileType = [];
-    let allTiles = document.querySelectorAll(".tile");
-    console.log(allTiles);
-    for (let tile of allTiles) {
-        axisX.push(tile.dataset.row);
-        axisY.push(tile.dataset.column);
-        tileType.push(tile.className);
-    }
-    const level = new Level(axisX, axisY, tileType);
-    console.log(level);
-}
+// function saveGameArea() {
+//     let axisX = [];
+//     let axisY = [];
+//     let tileType = [];
+//     let allTiles = document.querySelectorAll(".tile");
+//     console.log(allTiles);
+//     for (let tile of allTiles) {
+//         axisX.push(tile.dataset.row);
+//         axisY.push(tile.dataset.column);
+//         tileType.push(tile.className);
+//     }
+//     const level = new Level(axisX, axisY, tileType);
+//     console.log(level);
+// }
 
-export function createSaveButton() {
-    let saveButton = document.createElement("button")
-    saveButton.addEventListener("click", saveGameArea);
-    saveButton.innerText = "save";
-    document.body.appendChild(saveButton);
-}
+// function createSaveButton() {
+//     let saveButton = document.createElement("button")
+//     saveButton.addEventListener("click", saveGameArea);
+//     saveButton.innerText = "save";
+//     document.body.appendChild(saveButton);
+// }
 
-export function initEditorMenu() {
-    const options = ["goal", "player", "obstacle"];
-    let menu = document.createElement("div");
-    menu.id = "editor-menu";
-    for (let option of options) {
-        let button = document.createElement("div");
-        button.id = "button";
-        button.className = option;
-        button.addEventListener("click", (event) => {
-            let choice = event.target;
-            activateTile(choice.className);
-        })
-        menu.appendChild(button);
-    }
-    document.body.appendChild(menu);
-}
+// export function initEditorMenu() {
+//     const options = ["goal", "player", "obstacle"];
+//     let menu = document.createElement("div");
+//     menu.id = "editor-menu";
+//     for (let option of options) {
+//         let button = document.createElement("div");
+//         button.id = "button";
+//         button.className = option;
+//         button.addEventListener("click", (event) => {
+//             let choice = event.target;
+//             activateTile(choice.className);
+//         })
+//         menu.appendChild(button);
+//     }
+//     document.body.appendChild(menu);
+// }
 
 function activateTile(chosenType) {
     let chosenTile = document.querySelector("input[type=hidden]");
@@ -238,41 +241,39 @@ function activateTile(chosenType) {
     }
 }
 
-function addClassToTile(targetTile) {
-    let userChoice = document.querySelector("input[type=hidden]");
-    targetTile.classList.add(userChoice.value);
-}
+// function addClassToTile(targetTile) {
+//     let userChoice = document.querySelector("input[type=hidden]");
+//     targetTile.classList.add(userChoice.value);
+// }
 
-function removeClassFromTile(targetTile) {
-    let userChoice = document.querySelector("input[type=hidden]");
-    targetTile.classList.remove(userChoice.value);
-}
+// function removeClassFromTile(targetTile) {
+//     let userChoice = document.querySelector("input[type=hidden]");
+//     targetTile.classList.remove(userChoice.value);
+// }
 
-export function addListenerForTile(tile) {
-    tile.addEventListener("click", (event) => {
-        let chosenTile = event.target;
-        addClassToTile(chosenTile);
-    })
+// export function addListenerForTile(tile) {
+//     tile.addEventListener("click", (event) => {
+//         let chosenTile = event.target;
+//         addClassToTile(chosenTile);
+//     })
 
-    tile.addEventListener("contextmenu", (event) => {
-        let chosenTile = event.target;
-        event.preventDefault();
-        removeClassFromTile(chosenTile);
-    })
+//     tile.addEventListener("contextmenu", (event) => {
+//         let chosenTile = event.target;
+//         event.preventDefault();
+//         removeClassFromTile(chosenTile);
+//     })
 
-    tile.addEventListener("mouseover", (event) => {
-        let chosenTile = event.target;
-        if (event.ctrlKey) {
-            addClassToTile(chosenTile);
-        } else if (event.shiftKey) {
-            removeClassFromTile(chosenTile);
-        }
-    })
-}
-
+//     tile.addEventListener("mouseover", (event) => {
+//         let chosenTile = event.target;
+//         if (event.ctrlKey) {
+//             addClassToTile(chosenTile);
+//         } else if (event.shiftKey) {
+//             removeClassFromTile(chosenTile);
+//         }
+//     })
+// }
 
 
 createTable();
-initMovement();
 initEditorMenu();
-
+game.initMovement();
