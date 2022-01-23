@@ -5,6 +5,7 @@ import { initEditorMenu, createTable, addRotateEventListener, rotateMap } from "
 export function initMovement() {
     document.addEventListener('keydown', startMovement
     );
+    
 }
 
 function startMovement(event) {
@@ -20,4 +21,4 @@ function startMovement(event) {
 createTable();
 initMovement();
 initEditorMenu();
-addRotateEventListener();
+

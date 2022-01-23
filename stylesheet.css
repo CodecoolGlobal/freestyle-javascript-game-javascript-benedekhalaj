@@ -184,7 +184,7 @@ html {
     transform: translateZ(1em);
     transform-style: preserve-3d;
     transition-property: transform ease-in;
-    transition: 0.15s;
+    transition: 0.25s;
 }
 .player:before, .player:after {
     content: "";
