@@ -26,14 +26,6 @@
     transition: scale 0.3s;
 }
 
-#button.save,
-#button.set-origin,
-#button.generate-map,
-#button.copy {
-    background-color: floralwhite;
-    border-color: floralwhite;
-}
-
 #button:hover {
     scale: 1.2;
 }

@@ -5,6 +5,19 @@ const GAME_AREA_HEIGHT = 12;
 const GAME_AREA_WIDTH = 12;
 
 
+function Level(tiles, playerOrigin) {
+    this.tiles = tiles,
+    this.playerOrigin = playerOrigin
+}
+
+function Tile(row, col, type) {
+    this.row = row,
+    this.col = col,
+    this. type = type
+}
+
+let testLevel = {};
+
 function createTable() {
     const display = document.getElementById("display");
     for (let i = 0; i < GAME_AREA_HEIGHT; i++) {
@@ -33,8 +46,24 @@ function createElement(classOfElement) {
 
 function saveGameArea() {
     let textArea = document.querySelector("textarea");
-    let display = document.getElementById("display");
-    textArea.innerText = display.innerHTML;
+    let tileNodes = document.querySelectorAll("#display > div");   /* find selector */
+    testLevel = convertGameAreaToArray(tileNodes);
+    console.log(testLevel);
+}
+
+function convertGameAreaToArray(tileNodes) {
+    const tilesArray = []
+    for (let tile of tileNodes) {
+        let row = tile.dataset.row;
+        let col = tile.dataset.column;
+        let type = tile.className || 'empty';
+        let currentTile = new Tile(row, col, type);
+        tilesArray.push(currentTile);
+    }
+    let originElement = document.getElementById("playerOrigin");
+    let playerOrigin = [originElement.dataset.originX, originElement.dataset.originY];
+    const level = new Level(tilesArray, playerOrigin);
+    return level
 }
 
 function createSaveButton() {
@@ -49,6 +78,15 @@ function createCopyButton() {
     copyButton.className = "copy"
     copyButton.addEventListener("click", copyToClipboard);
     return copyButton
+}
+
+function createLoadMapButton() {
+    let loadButton = createButtonFor("load map");
+    loadButton.className = "load-map";
+    loadButton.addEventListener("click", (e) => {
+        loadLevel(testLevel)
+    });
+    return loadButton
 }
 
 function createGenerateMapButton() {
@@ -93,10 +131,12 @@ function initEditorMenu() {
     let generateMapButton = createGenerateMapButton();
     let copyMapHtmlButton = createCopyButton();
     let setOriginButton = createSetOriginButton();
+    let loadMapButton = createLoadMapButton();
     menu.appendChild(copyMapHtmlButton);
     menu.appendChild(saveMapButton);
     menu.appendChild(generateMapButton);
     menu.appendChild(setOriginButton);
+    menu.appendChild(loadMapButton);
     document.body.appendChild(menu);
 }
 
@@ -172,12 +212,23 @@ function saveOrigin() {
     let playerOrigin = document.createElement("input");
     let display = document.getElementById("display");
     playerOrigin.type = "hidden";
-    playerOrigin.id = "playerOrigin"
+    playerOrigin.id = "playerOrigin";
     playerOrigin.dataset.originX = coordinates[0];
     playerOrigin.dataset.originY = coordinates[1];
     display.appendChild(playerOrigin);
 }
 
+function loadLevel(level) {
+    deleteTable();
+    let displayArea = document.getElementById("display");
+    for (let tile of level.tiles) {
+        let tileDiv = document.createElement("div");
+        tileDiv.dataset.row = tile.row;
+        tileDiv.dataset.column = tile.col;
+        tileDiv.className = tile.type;
+        displayArea.appendChild(tileDiv);
+    }
+}
 
 createTable();
 initEditorMenu();
